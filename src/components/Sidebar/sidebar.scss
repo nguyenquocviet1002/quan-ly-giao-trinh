@@ -1,0 +1,28 @@
+.sidebar {
+  ul {
+    width: 22%;
+    border: 1px solid #227ff4;
+    padding: 0;
+  }
+  &__item {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #227ff4;
+    padding: 8px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 16px;
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      background-color: #1b7bf0b2;
+      color: #fff;
+    }
+
+    img {
+      width: 6%;
+      height: auto;
+    }
+  }
+}

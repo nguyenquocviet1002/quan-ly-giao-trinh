@@ -1,0 +1,11 @@
+.noti {
+  &__box {
+    border: 1px solid #ccc;
+    width: 22%;
+    display: none;
+  }
+  &:hover .noti__box {
+    display: block;
+    transition: all 0.5s ease-in-out;
+  }
+}

@@ -1,0 +1,56 @@
+.currChildEdit {
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  &__title {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 500;
+    color: #227ff4;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 222px auto;
+    width: 40%;
+    background-color: #fff;
+    padding: 20px 0;
+    border-radius: 15px;
+  }
+
+  &__item {
+    margin: 10px 0;
+    width: 70%;
+
+    input {
+      width: 100%;
+      height: 33px;
+      margin-top: 5px;
+    }
+  }
+
+  &__btn {
+    button {
+      margin: 5px 0px;
+      font-size: 16px;
+      padding: 8px 15px;
+      border-radius: 10px;
+      color: #fff;
+      border: none;
+      background: linear-gradient(118deg, #227ff4, #227ff4b2);
+      cursor: pointer;
+      &:hover {
+        transition: all 0.2s ease-in-out;
+        background-color: #1b7bf0b2;
+      }
+    }
+  }
+}

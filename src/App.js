@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+// import Header from './components/Header';
+// import Sidebar from './components/Sidebar';
+// import Courses from './components/Courses';
+// import CoursesDetail from './components/CoursesDetail';
+// import CurriculumContent from './components/CurriculumContent';
+// import Notification from './components/Notification';
+// import Login from './components/Login';
+// import Register from './components/Register';
+// import DashboardSidebar from "./components/DashboardSidebar";
+// import Statistical from "./components/Statistical";
+// import CurriculumList from "./components/CurriculumList";
+// import CurriculumAdd from "./components/CurriculumAdd";
+// import Pagination from "./components/Pagination";
+// import CurriculumEdit from "./components/CurriculumEdit";
+// import CurriculumChildEdit from "./components/CurriculumChildEdit";
+// import CurriculumDelete from "./components/CurriculumDelete";
+import Students from "./components/Students";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-quan-ly-giao-trinh">
+      {/* <Header />
+      <Sidebar />
+      <Courses />
+      <CoursesDetail />
+      <CurriculumContent />
+      <Notification />
+      <Login />
+      <Register />
+      <DashboardSidebar />
+      <Statistical />
+      <CurriculumList />
+      <CurriculumAdd />
+      <Pagination />
+      <CurriculumEdit />
+      <CurriculumChildEdit />
+      <CurriculumDelete /> */}
+      <Students />
+
     </div>
   );
 }
