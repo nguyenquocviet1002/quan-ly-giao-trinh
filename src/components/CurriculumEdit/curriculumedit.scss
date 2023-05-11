@@ -1,0 +1,79 @@
+.currEdit {
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    p {
+      font-size: 25px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #227ff4;
+    }
+  }
+
+  &__icon {
+    width: 2%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+  }
+
+  &__box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 40px;
+  }
+
+  &__list {
+    margin-top: 20px;
+    &--item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #ccc;
+      padding: 8px 0;
+      margin: 10px 0;
+      border-radius: 9px;
+      box-shadow: 0 1px 5px 0 #00000026;
+
+      p {
+        margin: 0 8px;
+      }
+    }
+
+    &--action {
+      img {
+        width: 22%;
+        height: auto;
+        padding: 0 10px;
+      }
+    }
+  }
+
+  &__addItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    padding: 8px 0;
+    cursor: pointer;
+    border-radius: 9px;
+    box-shadow: 0 1px 5px 0 #00000026;
+
+    img {
+      width: 2%;
+      height: auto;
+    }
+  }
+}

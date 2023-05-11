@@ -1,0 +1,48 @@
+.header {
+  border-bottom: 1px solid #227ff4;
+  &__box {
+    display: grid;
+    grid-template-columns: 65% 10% 25%;
+    align-items: center;
+  }
+
+  &__logo {
+    img {
+      width: 26%;
+      height: auto;
+    }
+  }
+
+  &__noti {
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  &__btn {
+    display: block;
+    margin: 0 auto;
+
+    button {
+      margin: 0 10px;
+      font-size: 16px;
+      padding: 8px 15px;
+      border-radius: 10px;
+      color: #fff;
+      border: none;
+      background: linear-gradient(118deg, #227ff4, #227ff4b2);
+      cursor: pointer;
+      &:hover {
+        transition: all 0.2s ease-in-out;
+        background-color: #1b7bf0b2;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__box {
+      grid-template-columns: 55% 5% 40%;
+    }
+  }
+}

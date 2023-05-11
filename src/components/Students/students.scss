@@ -1,0 +1,29 @@
+.students {
+  &__title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #227ff4;
+  }
+
+  &__box {
+    &--img {
+      width: 6%;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &__img {
+    width: 42%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
