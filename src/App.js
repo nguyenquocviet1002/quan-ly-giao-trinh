@@ -1,3 +1,5 @@
+import { Routes, Route } from 'react-router-dom';
+
 // import Header from './components/Header';
 // import Sidebar from './components/Sidebar';
 // import Courses from './components/Courses';
@@ -18,26 +20,29 @@ import Students from "./components/Students";
 
 function App() {
   return (
-    <div className="app-quan-ly-giao-trinh">
-      {/* <Header />
-      <Sidebar />
-      <Courses />
-      <CoursesDetail />
-      <CurriculumContent />
-      <Notification />
-      <Login />
-      <Register />
-      <DashboardSidebar />
-      <Statistical />
-      <CurriculumList />
-      <CurriculumAdd />
-      <Pagination />
-      <CurriculumEdit />
-      <CurriculumChildEdit />
-      <CurriculumDelete /> */}
-      <Students />
+    <Routes>
+      <Route path="/" element={<Students />} />
+    </Routes>
+    // <div className="app-quan-ly-giao-trinh">
+    //   <Header />
+    //   <Sidebar />
+    //   <Courses />
+    //   <CoursesDetail />
+    //   <CurriculumContent />
+    //   <Notification />
+    //   <Login />
+    //   <Register />
+    //   <DashboardSidebar />
+    //   <Statistical />
+    //   <CurriculumList />
+    //   <CurriculumAdd />
+    //   <Pagination />
+    //   <CurriculumEdit />
+    //   <CurriculumChildEdit />
+    //   <CurriculumDelete />
+    //   <Students />
 
-    </div>
+    // </div>
   );
 }
 
