@@ -1,14 +1,16 @@
 .header {
-  border-bottom: 1px solid #227ff4;
+  border-bottom: 1px solid #efefef;
+  box-shadow: 0 1px 10px 0 #00000026;
   &__box {
     display: grid;
-    grid-template-columns: 65% 10% 25%;
+    grid-template-columns: 70% 5% 25%;
     align-items: center;
   }
 
   &__logo {
+    width: 15%;
     img {
-      width: 26%;
+      width: 100%;
       height: auto;
     }
   }
@@ -43,6 +45,34 @@
   @media (max-width: 1024px) {
     &__box {
       grid-template-columns: 55% 5% 40%;
+    }
+
+    &__logo {
+      width: 25%;
+    }
+
+    &__btn {
+      margin-left: 135px;
+    }
+  }
+
+  @media (max-width: 820px) {
+    &__box {
+      grid-template-columns: 50% 5% 45%;
+    }
+
+    &__logo {
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__box {
+      grid-template-columns: 45% 5% 50%;
+    }
+
+    &__logo {
+      width: 42%;
     }
   }
 }

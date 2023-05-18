@@ -4,7 +4,7 @@ import './curriculumadd.scss';
 function CurriculumAdd() {
     return (
         <div className="currAdd">
-            <div className="container">
+            <div className="currAdd__mainBox">
                 <h3 className="currAdd__title">Thêm giáo trình</h3>
                 <div className="currAdd__box">
                     <div className="currAdd__box1">

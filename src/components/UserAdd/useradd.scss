@@ -1,4 +1,4 @@
-.currAdd {
+.userAdd {
   background-color: #edf0f2;
   width: 100%;
   padding: 35px 50px;
@@ -12,26 +12,27 @@
     font-size: 22px;
     font-weight: 600;
     color: #227ff4;
-    margin: 0 0 25px 0;
+    margin: 0 0 12px 0;
   }
 
   &__item {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 20px 0;
+    align-items: flex-start;
+    gap: 6px;
+    margin: 12px 0;
+    flex-direction: column;
   }
 
   &__box {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 40px;
   }
 
   &__btn {
     button {
-      margin: 5px 0px;
+      margin: 12px 0px;
       font-size: 16px;
       padding: 8px 15px;
       border-radius: 10px;

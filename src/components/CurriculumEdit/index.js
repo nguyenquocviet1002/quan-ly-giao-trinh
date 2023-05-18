@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './curriculumedit.scss';
 
 function CurriculumEdit() {
     return (
         <div className="currEdit">
-            <div className="container">
+            <div className="currEdit__mainBox">
                 <div className="currEdit__name">
                     <p>Giáo trình code</p>
                     <div className="currEdit__icon">
-                        <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
+                        <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
                     </div>
                 </div>
                 <div className="currEdit__box">
@@ -38,8 +39,10 @@ function CurriculumEdit() {
                     <div className="currEdit__list--item">
                         <p>1. Toán tử logic trong JS</p>
                         <div className="currEdit__list--action">
-                            <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
-                            <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+                            <Link to={'/sua-giao-trinh-con'}>
+                                <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
+                            </Link>
+                            <img src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
                         </div>
                     </div>
                     <div className="currEdit__list--item">
@@ -72,7 +75,7 @@ function CurriculumEdit() {
                     </div>
                 </div>
                 <div className="currEdit__addItem">
-                    <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/plus.png`} alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/images/plus.png`} alt="" />
                     Thêm mới
                 </div>
             </div>

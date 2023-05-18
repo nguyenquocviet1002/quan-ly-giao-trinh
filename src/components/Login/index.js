@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './login.scss';
 
 function Login() {
@@ -26,9 +27,11 @@ function Login() {
                                 <label>
                                     <input type='checkbox' name='' /> Nhớ Đăng Nhập
                                 </label>
-                                <p className="login__regist">
-                                    Đăng ký
-                                </p>
+                                <Link to={'/register'}>
+                                    <p className="login__regist">
+                                        Đăng ký
+                                    </p>
+                                </Link>
                             </div>
                             <div className='login__button'>
                                 <button>Đăng nhập</button>
