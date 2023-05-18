@@ -1,10 +1,11 @@
 import React from "react";
 import './students.scss';
+import Pagination from "../Pagination";
 
 function Students() {
     return (
         <div className="students">
-            <div className="container">
+            <div className="students__mainBox">
                 <h3 className="students__title">Danh sách học viên</h3>
                 <table class="table">
                     <tr>
@@ -19,7 +20,7 @@ function Students() {
                         <td className="students__box">Active</td>
                         <td className="students__box">
                             <div className="students__box--img">
-                                <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+                                <img src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
                             </div>
                         </td>
                     </tr>
@@ -45,7 +46,43 @@ function Students() {
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td className="students__box">
+                            Hoàng Dương
+                        </td>
+                        <td className="students__box">Unactive</td>
+                        <td className="students__box">
+                            <div className="students__box--img">
+                                <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="students__box">
+                            Hoàng Dương
+                        </td>
+                        <td className="students__box">Unactive</td>
+                        <td className="students__box">
+                            <div className="students__box--img">
+                                <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="students__box">
+                            Hoàng Dương
+                        </td>
+                        <td className="students__box">Unactive</td>
+                        <td className="students__box">
+                            <div className="students__box--img">
+                                <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+                            </div>
+                        </td>
+                    </tr>
                 </table>
+                <div className='students__pagination'>
+                    <Pagination pageCount={10} pageNum={10} range={6} />
+                </div>
             </div>
         </div>
     )
