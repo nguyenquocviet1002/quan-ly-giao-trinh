@@ -1,9 +1,3 @@
-import Login from "@/components/Login";
+import ScreenLogin from "./Login";
 
-const ScreenLogin = () => {
-    return (
-        <Login />
-    )
-}
-
-export default ScreenLogin;
+export default ScreenLogin

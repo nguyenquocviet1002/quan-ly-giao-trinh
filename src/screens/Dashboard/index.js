@@ -1,20 +1,15 @@
 import { Outlet } from 'react-router-dom';
-import Header from '@/components/Header';
 import Sidebar from '@/components/DashboardSidebar';
 import './dashboard.scss';
 
-const ScreenDashboard = () => {
+const ScreenDashboard = ({ role }) => {
     return (
         <div>
-            <Header />
-
-
+            <h3>Header Admin</h3>
             <div className='main__box'>
-                <Sidebar />
-
+                <Sidebar role={role} />
                 <Outlet />
             </div>
-
         </div>
     )
 }
