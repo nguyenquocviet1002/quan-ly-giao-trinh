@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLogin } from '@/services/authService';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import './Login.scss';
+import './_Login.scss';
 
 export default function Login() {
   const initialInfo = {
