@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRegister } from '@/services/authService';
-import './Register.scss';
+import './_Register.scss';
 
 export default function Register() {
   const initialInfo = {
