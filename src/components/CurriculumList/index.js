@@ -8,7 +8,7 @@ function CurriculumList() {
         <div className="currList">
 
             <div className="currList__btn">
-                <Link to={'/them-giao-trinh'}>
+                <Link to='/admin/them-giao-trinh'>
                     <button>Thêm</button>
                 </Link>
             </div>
