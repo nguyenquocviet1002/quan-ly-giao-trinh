@@ -29,9 +29,13 @@ export default function Login() {
       mutateLogin(infoLogin, {
         onError: (res) => alert(res.response.data.error),
         onSuccess: (data) => {
-          setToken(data.data.data.token);
-          setInfoLogin(initialInfo);
-          navigate('/');
+          if (data.data.data.status === true) {
+            setToken(data.data.data.token);
+            setInfoLogin(initialInfo);
+            navigate('/');
+          } else {
+            alert('Tài khoản chưa được xác minh.');
+          }
         },
       });
     }
