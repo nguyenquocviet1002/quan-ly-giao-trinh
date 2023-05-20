@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRegister } from '@/services/authService';
 import './_Register.scss';
+import { useGetDepartment } from '@/services/departmentService';
 
 export default function Register() {
   const initialInfo = {
@@ -20,7 +21,8 @@ export default function Register() {
     setInfoRegister((prev) => ({ ...prev, [name]: event.target.value }));
   };
 
-  const { mutateRegister, isSuccessRegister } = useRegister();
+  const { mutateRegister } = useRegister();
+  const { dataDepartment, isSuccessDepartment } = useGetDepartment();
 
   const navigate = useNavigate();
 
@@ -36,16 +38,14 @@ export default function Register() {
     } else if (infoRegister.password !== infoRegister.c_password) {
       alert('Mật khẩu không trùng khớp');
     } else {
-      mutateRegister(infoRegister);
-      if (isSuccessRegister) {
-        setInfoRegister(initialInfo);
-      }
+      mutateRegister(infoRegister, {
+        onSuccess: () => {
+          setInfoRegister(initialInfo);
+          navigate('/login');
+        },
+      });
     }
   };
-
-  if (isSuccessRegister) {
-    navigate('/login');
-  }
 
   return (
     <div className="regist">
@@ -77,12 +77,13 @@ export default function Register() {
               </div>
               <div className="regist__select">
                 <select onChange={handleChange('department_id')}>
-                  <option value="0">Chọn giáo trình:</option>
-                  <option value="1">Giáo trình Code</option>
-                  <option value="2">Giáo trình Video</option>
-                  <option value="3">Giáo trình SEO</option>
-                  <option value="4">Giáo trình Sale</option>
-                  <option value="5">Giáo trình Seeding</option>
+                  <option value="">Chọn giáo trình</option>
+                  {isSuccessDepartment &&
+                    dataDepartment.data.data.map((item, index) => (
+                      <option key={index} value={item.id}>
+                        {item.name}
+                      </option>
+                    ))}
                 </select>
               </div>
               <div className="regist__button">
