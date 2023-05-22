@@ -4,7 +4,7 @@ export const getAllCurriculumFn = () => {
     return http.get('/curriculum')
 }
 
-export const getCurriculumDepartmentFn = (token, id) => {
+export const getCurriculumDepartmentFn = (id) => {
     return http.get(`/curriculum?department_id=${id}`)
 }
 

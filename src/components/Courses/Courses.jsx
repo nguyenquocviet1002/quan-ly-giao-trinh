@@ -17,7 +17,7 @@ export default function Courses() {
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useLocalStorage('token', null);
 
-  const { dataCurriculumDepartment } = useGetCurriculumDepartment(token, id);
+  const { dataCurriculumDepartment } = useGetCurriculumDepartment(id);
   const { dataDepartment } = useGetDepartment();
 
   return (
@@ -54,7 +54,7 @@ export default function Courses() {
               <>
                 <div className="courses__title">
                   <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/agenda.png`} alt="" />
-                  Giáo trình {filterById(dataCurriculumDepartment.data.data[0].department_id, dataDepartment.data.data)}
+                  Giáo trình {filterById(id, dataDepartment.data.data)}
                 </div>
                 <div className="courses__box">
                   <Swiper spaceBetween={50} slidesPerView={4}>

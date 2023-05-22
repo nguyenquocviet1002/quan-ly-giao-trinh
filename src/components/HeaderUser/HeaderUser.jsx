@@ -48,7 +48,7 @@ export default function HeaderUser() {
           <img width="15" height="15" src={`${process.env.PUBLIC_URL}/images/down-arrow.png`} alt="" />
           <div className="headerUser__dropdown">
             <ul>
-              {isSuccessUser && dataUser.data.data.role === 'ADMIN' && (
+              {isSuccessUser && (dataUser.data.data.role === 'ADMIN' || dataUser.data.data.role === 'SUB_ADMIN') && (
                 <li className="headerUser__itemMenu">
                   <Link to="/admin" style={{ display: 'block' }}>
                     Admin
