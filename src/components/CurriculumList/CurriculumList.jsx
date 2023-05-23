@@ -24,7 +24,7 @@ const columns = [
     name: 'Hành động',
     cell: (row) => (
       <div className="currList__box--img">
-        <Link to={'/sua-giao-trinh'}>
+        <Link to={`/admin/sua-giao-trinh/${row.id}`}>
           <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
         </Link>
         <img src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />

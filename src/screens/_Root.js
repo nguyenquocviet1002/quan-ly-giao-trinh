@@ -42,7 +42,7 @@ const ScreenRoot = () => {
                                 <Route path='thong-ke-giao-trinh' element={<CurriculumStatistics />} />
                                 <Route path='giao-trinh' element={<CurriculumList />} />
                                 <Route path='them-giao-trinh' element={<CurriculumAdd />} />
-                                <Route path='sua-giao-trinh' element={<CurriculumEdit />} />
+                                <Route path='sua-giao-trinh/:id' element={<CurriculumEdit />} />
                                 <Route path='sua-giao-trinh-con' element={<CurriculumChildEdit />} />
                                 <Route path='quan-ly-hoc-vien' element={<Students />} />
                             </Route>

@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
-import './_CurriculumAdd.scss';
+import { useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useGetUser } from '@/services/userService';
 import { useUploadImage } from '@/services/fileService';
+import { useCreateCurriculum } from '@/services/curriculumService';
+import './_CurriculumAdd.scss';
 
 export default function CurriculumAdd() {
   const initialCurr = {
@@ -15,12 +18,16 @@ export default function CurriculumAdd() {
   };
 
   const [infoCurr, setInfoCurr] = useState(initialCurr);
-  const [currImage, setCurrImage] = useState('');
 
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useLocalStorage('token', null);
+
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
   const { dataUser } = useGetUser(token);
   const { mutateUploadImage } = useUploadImage();
+  const { mutateCreateCurr } = useCreateCurriculum(token);
   useEffect(() => {
     setInfoCurr((prev) => ({
       ...prev,
@@ -32,13 +39,22 @@ export default function CurriculumAdd() {
   const handleChange = (name) => (event) => {
     setInfoCurr((prev) => ({ ...prev, [name]: event.target.value }));
   };
+  const handleSubmitImage = (item) => {
+    mutateUploadImage(item, {
+      onSuccess: (data) =>
+        setInfoCurr((prev) => ({
+          ...prev,
+          images: `https://scigroup.com.vn/app/upload/public${data.data.data.image}`,
+        })),
+    });
+  };
+
   const handleSubmit = () => {
-    mutateUploadImage(currImage[0], {
+    mutateCreateCurr(infoCurr, {
       onSuccess: (data) => {
-        setInfoCurr({ ...infoCurr, images: `https://scigroup.com.vn/app/upload/public${data.data.data.image}` });
-      },
-      onError: () => {
-        console.log(infoCurr);
+        queryClient.invalidateQueries({ queryKey: ['curriculumsDepartment', data.data.data.department_id] });
+        setInfoCurr(initialCurr);
+        navigate('/admin');
       },
     });
   };
@@ -51,7 +67,12 @@ export default function CurriculumAdd() {
           <div className="currAdd__box1">
             <div className="currAdd__item">
               <label>Hình ảnh</label>
-              <input type="file" onChange={(e) => setCurrImage(e.target.files)}></input>
+              <input
+                type="file"
+                onChange={(e) => {
+                  handleSubmitImage(e.target.files[0]);
+                }}
+              ></input>
             </div>
             <div className="currAdd__item">
               <label>Tên giáo trình</label>

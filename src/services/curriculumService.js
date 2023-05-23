@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { getAllCurriculumFn, getCurriculumDepartmentFn } from "@/api/curriculumApi";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { createCurriculumFn, getAllCurriculumFn, getCurriculumByIdFn, getCurriculumDepartmentFn } from "@/api/curriculumApi";
 
 
 export function useGetCurriculum() {
@@ -18,4 +18,20 @@ export function useGetCurriculumDepartment(id) {
         staleTime: Infinity
     })
     return { dataCurriculumDepartment, isLoadingCurriculumDepartment, isSuccessCurriculumDepartment }
+}
+
+export function useGetCurriculumById(id) {
+    const { data: dataCurriculumById, isLoading: isLoadingCurriculumById, isSuccess: isSuccessCurriculumById } = useQuery({
+        queryKey: ['curriculumsById', id],
+        queryFn: () => getCurriculumByIdFn(id),
+        staleTime: Infinity
+    })
+    return { dataCurriculumById, isLoadingCurriculumById, isSuccessCurriculumById }
+}
+
+export function useCreateCurriculum(token) {
+    const { mutate: mutateCreateCurr, data: dataCreateCurriculum, isLoading: isLoadingCreateCurriculum, isSuccess: isSuccessCreateCurriculum } = useMutation({
+        mutationFn: (body) => createCurriculumFn(token, body)
+    })
+    return { mutateCreateCurr, dataCreateCurriculum, isLoadingCreateCurriculum, isSuccessCreateCurriculum }
 }
