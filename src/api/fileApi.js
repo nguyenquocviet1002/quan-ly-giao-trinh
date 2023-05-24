@@ -9,3 +9,11 @@ export const uploadImageFn = (data) => {
         })
     )
 }
+
+export const uploadFileFn = (data) => {
+    return (
+        axios.post(`${baseURL}/upload-file`, { file: data }, {
+            headers: { "Content-Type": 'multipart/form-data' }
+        })
+    )
+}

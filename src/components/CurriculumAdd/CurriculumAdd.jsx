@@ -13,7 +13,7 @@ export default function CurriculumAdd() {
     user_id: '',
     name: '',
     images: '',
-    status: '',
+    status: 'public',
     description: '',
   };
 
@@ -52,7 +52,8 @@ export default function CurriculumAdd() {
   const handleSubmit = () => {
     mutateCreateCurr(infoCurr, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries({ queryKey: ['curriculumsDepartment', data.data.data.department_id] });
+        queryClient.invalidateQueries({ queryKey: ['curriculumsDepartment', Number(data.data.data.department_id)] });
+        queryClient.invalidateQueries({ queryKey: ['curriculumsDepartment', Number(0)] });
         setInfoCurr(initialCurr);
         navigate('/admin');
       },

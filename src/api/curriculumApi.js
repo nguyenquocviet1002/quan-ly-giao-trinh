@@ -17,3 +17,15 @@ export const createCurriculumFn = (token, body) => {
         headers: { 'Authorization': token }
     })
 }
+
+export const updateCurriculumFn = (token, id, body) => {
+    return http.put(`/curriculum/${id}`, JSON.stringify(body), {
+        headers: { 'Authorization': token }
+    })
+}
+
+export const deleteCurriculumFn = (token, id) => {
+    return http.delete(`/curriculum/${id}`, {
+        headers: { 'Authorization': token }
+    })
+}

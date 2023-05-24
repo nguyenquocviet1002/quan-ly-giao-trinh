@@ -1,37 +1,11 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
-import { useGetCurriculumDepartment } from '@/services/curriculumService';
+import { useDeleteCurriculum, useGetCurriculumDepartment } from '@/services/curriculumService';
 import { useGetUser } from '@/services/userService';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import './_CurriculumList.scss';
-
-const columns = [
-  {
-    name: 'Hình ảnh',
-    selector: (row) => <img src={row.images} alt="" />,
-  },
-  {
-    name: 'Tên giáo trình',
-    selector: (row) => row.name,
-    sortable: true,
-  },
-  {
-    name: 'Trạng thái',
-    selector: (row) => row.status,
-  },
-  {
-    name: 'Hành động',
-    cell: (row) => (
-      <div className="currList__box--img">
-        <Link to={`/admin/sua-giao-trinh/${row.id}`}>
-          <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
-        </Link>
-        <img src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
-      </div>
-    ),
-  },
-];
+import { useQueryClient } from '@tanstack/react-query';
 
 const customStyles = {
   subHeader: {
@@ -72,6 +46,47 @@ export default function CurriculumList() {
   const { dataCurriculumDepartment, isSuccessCurriculumDepartment } = useGetCurriculumDepartment(
     dataUser.data.data.department_id,
   );
+
+  const queryClient = useQueryClient();
+
+  const { mutateDeleteCurr } = useDeleteCurriculum(token);
+
+  const handleDelete = (id) => {
+    mutateDeleteCurr(id, {
+      onSuccess: (data) => {
+        queryClient.invalidateQueries({ queryKey: ['curriculumsDepartment', Number(data.data.data.department_id)] });
+      },
+    });
+  };
+
+  const columns = [
+    {
+      name: 'Hình ảnh',
+      selector: (row) => <img src={row.images} alt="" />,
+    },
+    {
+      name: 'Tên giáo trình',
+      selector: (row) => row.name,
+      sortable: true,
+    },
+    {
+      name: 'Trạng thái',
+      selector: (row) => row.status,
+    },
+    {
+      name: 'Hành động',
+      cell: (row) => (
+        <div className="currList__box--img">
+          <Link to={`/admin/sua-giao-trinh/${row.id}`}>
+            <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
+          </Link>
+          <button onClick={() => handleDelete(row.id)}>
+            <img src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+          </button>
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className="currList">
