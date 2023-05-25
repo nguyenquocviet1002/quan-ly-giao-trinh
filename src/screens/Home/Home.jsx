@@ -3,7 +3,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import HeaderUser from '@/components/HeaderUser';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
-import './Home.scss';
+import './_Home.scss';
 
 export default function ScreenHome() {
   // eslint-disable-next-line no-unused-vars

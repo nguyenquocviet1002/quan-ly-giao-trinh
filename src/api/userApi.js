@@ -6,8 +6,14 @@ export const userFn = (token) => (
     })
 )
 
-export const getAllFn = (token) => (
+export const getAllUserFn = (token) => (
     http.get('/get-all-user', {
+        headers: { Authorization: token }
+    })
+)
+
+export const getUserDepartmentFn = (token, id) => (
+    http.get(`/get-all-user?departmentId=${id}`, {
         headers: { Authorization: token }
     })
 )

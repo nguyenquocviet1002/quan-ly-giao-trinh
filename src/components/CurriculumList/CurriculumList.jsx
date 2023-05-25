@@ -1,11 +1,11 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
+import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDeleteCurriculum, useGetCurriculumDepartment } from '@/services/curriculumService';
 import { useGetUser } from '@/services/userService';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import './_CurriculumList.scss';
-import { useQueryClient } from '@tanstack/react-query';
 
 const customStyles = {
   subHeader: {

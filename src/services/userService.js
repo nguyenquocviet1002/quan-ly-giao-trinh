@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { userFn, getAllFn } from "@/api/userApi";
+import { userFn, getAllUserFn, getUserDepartmentFn } from "@/api/userApi";
 
 
 export function useGetUser(token) {
@@ -14,8 +14,17 @@ export function useGetUser(token) {
 export function useGetAllUser(token) {
     const { data: dataAllUser, isLoading: isLoadingAllUser, isSuccess: isSuccessAllUser } = useQuery({
         queryKey: ['userAll'],
-        queryFn: () => getAllFn(token),
+        queryFn: () => getAllUserFn(token),
         staleTime: Infinity
     })
     return { dataAllUser, isLoadingAllUser, isSuccessAllUser }
+}
+
+export function useGetUserDepartment(token, id) {
+    const { data: dataUserDepartment, isLoading: isLoadingUserDepartment, isSuccess: isSuccessUserDepartment } = useQuery({
+        queryKey: ['userDepartment'],
+        queryFn: () => getUserDepartmentFn(token, id),
+        staleTime: Infinity
+    })
+    return { dataUserDepartment, isLoadingUserDepartment, isSuccessUserDepartment }
 }
