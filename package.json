@@ -2,6 +2,7 @@
   "name": "quan-ly-giao-trinh",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://scigroup.com.vn/app/documents/",
   "dependencies": {
     "@tanstack/react-query": "^4.29.7",
     "@tanstack/react-query-devtools": "^4.29.7",
