@@ -13,7 +13,7 @@ import CurriculumChildEdit from '@/components/CurriculumChildEdit';
 import Students from '@/components/Students';
 import Users from '@/components/Users';
 import UserAdd from '@/components/UserAdd';
-import UserEdit from '@/components/UserEdit';
+// import UserEdit from '@/components/UserEdit';
 import Courses from '@/components/Courses';
 import CoursesDetail from '@/components/CoursesDetail';
 import CurriculumStatistics from '@/components/CurriculumStatistics';
@@ -42,8 +42,8 @@ const ScreenRoot = () => {
                                 <Route path='thong-ke-giao-trinh' element={<CurriculumStatistics />} />
                                 <Route path='giao-trinh' element={<CurriculumList />} />
                                 <Route path='them-giao-trinh' element={<CurriculumAdd />} />
-                                <Route path='sua-giao-trinh' element={<CurriculumEdit />} />
-                                <Route path='sua-giao-trinh-con' element={<CurriculumChildEdit />} />
+                                <Route path='sua-giao-trinh/:id' element={<CurriculumEdit />} />
+                                <Route path='sua-bai-hoc/:id' element={<CurriculumChildEdit />} />
                                 <Route path='quan-ly-hoc-vien' element={<Students />} />
                             </Route>
                         </>) : dataUser.data.data.role === 'ADMIN' ? (<>
@@ -52,12 +52,12 @@ const ScreenRoot = () => {
                                 <Route path='thong-ke-giao-trinh' element={<CurriculumStatistics />} />
                                 <Route path='giao-trinh' element={<CurriculumList />} />
                                 <Route path='them-giao-trinh' element={<CurriculumAdd />} />
-                                <Route path='sua-giao-trinh' element={<CurriculumEdit />} />
-                                <Route path='sua-giao-trinh-con' element={<CurriculumChildEdit />} />
+                                <Route path='sua-giao-trinh/:id' element={<CurriculumEdit />} />
+                                <Route path='sua-bai-hoc/:id' element={<CurriculumChildEdit />} />
                                 <Route path='quan-ly-hoc-vien' element={<Students />} />
                                 <Route path='danh-sach-tai-khoan' element={<Users />} />
                                 <Route path='them-tai-khoan' element={<UserAdd />} />
-                                <Route path='sua-tai-khoan' element={<UserEdit />} />
+                                {/* <Route path='sua-tai-khoan' element={<UserEdit />} /> */}
                             </Route>
                         </>) : ''
                     )
