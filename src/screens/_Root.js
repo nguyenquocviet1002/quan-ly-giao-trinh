@@ -24,7 +24,7 @@ const ScreenRoot = () => {
     const { dataUser, isSuccessUser } = useGetUser(token);
 
     return (
-        <Router>
+        <Router basename='/app/documents'>
             <Routes>
                 <Route path='/' element={<Navigate to={'/danh-sach-giao-trinh'} />} />
                 <Route path='/login' element={<ScreenLogin />} />
