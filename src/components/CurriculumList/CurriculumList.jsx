@@ -62,7 +62,7 @@ export default function CurriculumList() {
   const columns = [
     {
       name: 'Hình ảnh',
-      selector: (row) => <img src={row.images} alt="" />,
+      selector: (row) => <img width={'100%'} src={row.images} alt="" />,
     },
     {
       name: 'Tên giáo trình',

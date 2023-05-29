@@ -17,3 +17,16 @@ export const getUserDepartmentFn = (token, id) => (
         headers: { Authorization: token }
     })
 )
+
+export const updateUserFn = (token, id, body) => (
+    http.put(`/user/${id}`, JSON.stringify(body), {
+        headers: { Authorization: token }
+    })
+)
+
+export const deleteUserFn = (token, id) => (
+    http.delete(`/user/${id}`, {
+        headers: { Authorization: token }
+    })
+)
+

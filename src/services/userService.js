@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { userFn, getAllUserFn, getUserDepartmentFn } from "@/api/userApi";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { userFn, getAllUserFn, getUserDepartmentFn, updateUserFn, deleteUserFn } from "@/api/userApi";
 
 
 export function useGetUser(token) {
@@ -27,4 +27,18 @@ export function useGetUserDepartment(token, id) {
         staleTime: Infinity
     })
     return { dataUserDepartment, isLoadingUserDepartment, isSuccessUserDepartment }
+}
+
+export function useUpdateUser(token) {
+    const { mutate: muteUpdateUser, data: dataUpdateUser, isLoading: isLoadingUpdateUser, isSuccess: isSuccessUpdateUser } = useMutation({
+        mutationFn: ({ id, body }) => updateUserFn(token, id, body)
+    })
+    return { muteUpdateUser, dataUpdateUser, isLoadingUpdateUser, isSuccessUpdateUser }
+}
+
+export function useDeleteUser(token) {
+    const { mutate: muteDeleteUser, data: dataDeleteUser, isLoading: isLoadingDeleteUser, isSuccess: isSuccessDeleteUser } = useMutation({
+        mutationFn: (id) => deleteUserFn(token, id)
+    })
+    return { muteDeleteUser, dataDeleteUser, isLoadingDeleteUser, isSuccessDeleteUser }
 }

@@ -13,7 +13,7 @@ import CurriculumChildEdit from '@/components/CurriculumChildEdit';
 import Students from '@/components/Students';
 import Users from '@/components/Users';
 import UserAdd from '@/components/UserAdd';
-import UserEdit from '@/components/UserEdit';
+// import UserEdit from '@/components/UserEdit';
 import Courses from '@/components/Courses';
 import CoursesDetail from '@/components/CoursesDetail';
 import CurriculumStatistics from '@/components/CurriculumStatistics';
@@ -57,7 +57,7 @@ const ScreenRoot = () => {
                                 <Route path='quan-ly-hoc-vien' element={<Students />} />
                                 <Route path='danh-sach-tai-khoan' element={<Users />} />
                                 <Route path='them-tai-khoan' element={<UserAdd />} />
-                                <Route path='sua-tai-khoan' element={<UserEdit />} />
+                                {/* <Route path='sua-tai-khoan' element={<UserEdit />} /> */}
                             </Route>
                         </>) : ''
                     )

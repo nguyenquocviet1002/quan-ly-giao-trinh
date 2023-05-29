@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
+import { useQueryClient } from '@tanstack/react-query';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import { useGetUser, useGetUserDepartment } from '@/services/userService';
+import { useDeleteUser, useGetUser, useGetUserDepartment, useUpdateUser } from '@/services/userService';
 import './_Students.scss';
 
 const customStyles = {
@@ -36,13 +38,52 @@ const customStyles = {
 };
 
 export default function Students() {
+  const [dataRole, setDataRole] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useLocalStorage('token', null);
   const { dataUser } = useGetUser(token);
   const { dataUserDepartment, isSuccessUserDepartment } = useGetUserDepartment(token, dataUser.data.data.department_id);
-  if (isSuccessUserDepartment) {
-    const dataRoleUser = dataUserDepartment.data.data.filter((item) => item.role === 'USER');
-  }
+  const { muteUpdateUser } = useUpdateUser(token);
+  const { muteDeleteUser } = useDeleteUser(token);
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (isSuccessUserDepartment) {
+      const dataRoleUser = dataUserDepartment.data.data.filter((item) => item.role === 'USER');
+      setDataRole(dataRoleUser);
+    }
+  }, [isSuccessUserDepartment, dataUserDepartment]);
+
+  const handleUpdate = (id, value) => {
+    let status;
+
+    if (value === 'true') {
+      status = true;
+    } else {
+      status = false;
+    }
+
+    const dataValue = {
+      id: id,
+      body: {
+        status: status,
+      },
+    };
+
+    muteUpdateUser(dataValue, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['userDepartment'] });
+      },
+    });
+  };
+
+  const handleDelete = (id) => {
+    muteDeleteUser(id, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['userDepartment'] });
+      },
+    });
+  };
 
   const columns = [
     {
@@ -50,24 +91,22 @@ export default function Students() {
       selector: (row) => row.name,
     },
     {
-      name: 'Role',
-      selector: (row) => row.role,
+      name: 'Email',
+      selector: (row) => row.email,
     },
     {
       name: 'Trạng thái',
       selector: (row) => (
-        <>
-          <select defaultValue={row.status}>
-            <option value="true">Active</option>
-            <option value="false">Unactive</option>
-          </select>
-        </>
+        <select defaultValue={row.status} onChange={(event) => handleUpdate(row.id, event.target.value)}>
+          <option value="true">Active</option>
+          <option value="false">Unactive</option>
+        </select>
       ),
     },
     {
       name: 'Hành động',
       selector: (row) => (
-        <div className="students__box--img">
+        <div className="students__box--img" onClick={() => handleDelete(row.id)}>
           <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
         </div>
       ),
@@ -82,7 +121,7 @@ export default function Students() {
           {isSuccessUserDepartment && (
             <DataTable
               columns={columns}
-              data={dataUserDepartment.data.data}
+              data={dataRole}
               customStyles={customStyles}
               highlightOnHover
               pagination
@@ -91,67 +130,6 @@ export default function Students() {
               striped
             />
           )}
-          {/* <table class="table">
-            <tr>
-              <th>Học viên</th>
-              <th>Trạng thái</th>
-              <th>Hành động</th>
-            </tr>
-            <tr>
-              <td className="students__box">Hoàng Dương</td>
-              <td className="students__box">Active</td>
-              <td className="students__box">
-                <div className="students__box--img">
-                  <img src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="students__box">Hoàng Dương</td>
-              <td className="students__box">Active</td>
-              <td className="students__box">
-                <div className="students__box--img">
-                  <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="students__box">Hoàng Dương</td>
-              <td className="students__box">Unactive</td>
-              <td className="students__box">
-                <div className="students__box--img">
-                  <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="students__box">Hoàng Dương</td>
-              <td className="students__box">Unactive</td>
-              <td className="students__box">
-                <div className="students__box--img">
-                  <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="students__box">Hoàng Dương</td>
-              <td className="students__box">Unactive</td>
-              <td className="students__box">
-                <div className="students__box--img">
-                  <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="students__box">Hoàng Dương</td>
-              <td className="students__box">Unactive</td>
-              <td className="students__box">
-                <div className="students__box--img">
-                  <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
-                </div>
-              </td>
-            </tr>
-          </table> */}
         </div>
       </div>
     </>
