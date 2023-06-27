@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { useGetCurriculumDepartment } from '@/services/curriculumService';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useGetDepartment } from '@/services/departmentService';
@@ -31,21 +30,15 @@ export default function Courses() {
                   Tất cả giáo trình
                 </div>
                 <div className="courses__box">
-                  <Swiper spaceBetween={50} slidesPerView={4}>
-                    {dataCurriculumDepartment.data.data.map((item, index) =>
-                      token !== null ? (
-                        <SwiperSlide key={index}>
-                          <CoursesItem key={index} data={item} />
-                        </SwiperSlide>
-                      ) : item.status === 'public' ? (
-                        <SwiperSlide key={index}>
-                          <CoursesItem key={index} data={item} />
-                        </SwiperSlide>
-                      ) : (
-                        ''
-                      ),
-                    )}
-                  </Swiper>
+                  {dataCurriculumDepartment.data.data.map((item, index) =>
+                    token !== null ? (
+                      <CoursesItem key={index} data={item} />
+                    ) : item.status === 'public' ? (
+                      <CoursesItem key={index} data={item} />
+                    ) : (
+                      ''
+                    ),
+                  )}
                 </div>
               </>
             )
@@ -57,21 +50,15 @@ export default function Courses() {
                   Giáo trình {filterById(id, dataDepartment.data.data)}
                 </div>
                 <div className="courses__box">
-                  <Swiper spaceBetween={50} slidesPerView={4}>
-                    {dataCurriculumDepartment.data.data.map((item, index) =>
-                      token !== null ? (
-                        <SwiperSlide key={index}>
-                          <CoursesItem key={index} data={item} />
-                        </SwiperSlide>
-                      ) : item.status === 'public' ? (
-                        <SwiperSlide key={index}>
-                          <CoursesItem key={index} data={item} />
-                        </SwiperSlide>
-                      ) : (
-                        ''
-                      ),
-                    )}
-                  </Swiper>
+                  {dataCurriculumDepartment.data.data.map((item, index) =>
+                    token !== null ? (
+                      <CoursesItem key={index} data={item} />
+                    ) : item.status === 'public' ? (
+                      <CoursesItem key={index} data={item} />
+                    ) : (
+                      ''
+                    ),
+                  )}
                 </div>
               </>
             )}

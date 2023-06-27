@@ -6,6 +6,11 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__box">
+        <div class="header__btncheck">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div className="header__logo">
           <Link to="/">
             <img width="128" height="80" src={`${process.env.PUBLIC_URL}/images/logo-sci.svg`} alt="" />

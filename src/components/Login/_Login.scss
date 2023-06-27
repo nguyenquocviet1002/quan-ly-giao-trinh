@@ -1,5 +1,5 @@
 .login {
-  background: #f9f9f9;
+  background: linear-gradient(118deg, #227ff4, rgba(34, 127, 244, 0.698));
   display: flex;
   align-items: center;
   height: 100vh;
@@ -7,10 +7,11 @@
   &__box {
     display: flex;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 10px;
     justify-content: center;
     align-items: center;
     background: #fff;
+    padding: 50px 0;
   }
   &__pic {
     width: 60%;
@@ -38,16 +39,13 @@
     }
   }
   &__input {
-    text-align: left;
-    label {
-      color: #6f8cbe;
-    }
     input {
       width: 100%;
       padding: 10px;
       margin: 0 0 10px;
       border-radius: 25px;
       border: 1px solid #2386c7;
+      color: #6f8cbe;
     }
   }
   &__checkbox {
@@ -70,9 +68,47 @@
     }
   }
   &__regist {
-    float: right;
+    text-align: center;
     color: #2386c7;
-    font-weight: 600;
+    font-weight: 500;
     font-style: italic;
+    margin-top: 15px;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    &__pic {
+      width: 50%;
+    }
+    &__detail {
+      width: 50%;
+    }
+    &__title span {
+      font-size: 20px;
+    }
+    &__input input {
+      padding: 4px 12px;
+      font-size: 15px;
+    }
+    &__button button {
+      padding: 6px;
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__box {
+      flex-direction: column;
+      gap: 18px;
+    }
+    &__pic {
+      width: 80%;
+    }
+    &__detail {
+      width: 100%;
+    }
+    &__title {
+      text-align: center;
+    }
   }
 }

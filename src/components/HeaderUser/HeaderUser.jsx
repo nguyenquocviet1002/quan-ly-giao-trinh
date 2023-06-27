@@ -27,6 +27,11 @@ export default function HeaderUser() {
   return (
     <header className="headerUser">
       <div className="headerUser__box">
+        <div class="header__btncheck">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div className="headerUser__logo">
           <Link to="/">
             <img width="128" height="80" src={`${process.env.PUBLIC_URL}/images/logo-sci.svg`} alt="" />
@@ -36,7 +41,7 @@ export default function HeaderUser() {
           <img width="30" height="30" src={`${process.env.PUBLIC_URL}/images/icon-bell.png`} alt="" />
         </div>
         <div className="headerUser__boxUser">
-          <img width="30" height="30" src={`${process.env.PUBLIC_URL}/images/user.png`} alt="" />
+          <img className="iconUser" width="30" height="30" src={`${process.env.PUBLIC_URL}/images/user.png`} alt="" />
           <div className="headerUser__user">
             {isSuccessUser && (
               <>
@@ -50,15 +55,47 @@ export default function HeaderUser() {
             <ul>
               {isSuccessUser && (dataUser.data.data.role === 'ADMIN' || dataUser.data.data.role === 'SUB_ADMIN') && (
                 <li className="headerUser__itemMenu">
+                  <img
+                    className="iconUserRole"
+                    width="48"
+                    height="48"
+                    src={`${process.env.PUBLIC_URL}/images/user-role.png`}
+                    alt=""
+                  />
                   <Link to="/admin" style={{ display: 'block' }}>
                     Admin
                   </Link>
                 </li>
               )}
 
-              <li className="headerUser__itemMenu">Thông tin cá nhân</li>
-              <li className="headerUser__itemMenu">Đổi mật khẩu</li>
+              <li className="headerUser__itemMenu">
+                <img
+                  className="iconProfile"
+                  width="48"
+                  height="48"
+                  src={`${process.env.PUBLIC_URL}/images/profile.png`}
+                  alt=""
+                />
+                Thông tin cá nhân
+              </li>
+              <li className="headerUser__itemMenu">
+                <img
+                  className="iconPass"
+                  width="48"
+                  height="48"
+                  src={`${process.env.PUBLIC_URL}/images/password.png`}
+                  alt=""
+                />
+                Đổi mật khẩu
+              </li>
               <li className="headerUser__itemMenu" onClick={() => handleLogout()}>
+                <img
+                  className="iconLogout"
+                  width="48"
+                  height="48"
+                  src={`${process.env.PUBLIC_URL}/images/log-out.png`}
+                  alt=""
+                />
                 Đăng xuất
               </li>
             </ul>

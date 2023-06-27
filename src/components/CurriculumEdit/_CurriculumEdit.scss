@@ -1,6 +1,6 @@
 .currEdit {
   background-color: #edf0f2;
-  width: 100%;
+  width: 86%;
   padding: 35px 50px;
 
   &__mainBox {
@@ -13,7 +13,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 15px;
 
     p {
       font-size: 25px;
@@ -25,10 +24,19 @@
   }
 
   &__icon {
-    img {
-      width: 20px;
-      height: auto;
-      display: block;
+    button {
+      margin: 20px 10px;
+      font-size: 16px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #fff;
+      border: none;
+      background: linear-gradient(118deg, #227ff4, rgba(34, 127, 244, 0.6980392157));
+      cursor: pointer;
+      &:hover {
+        transition: all 0.2s ease-in-out;
+        background-color: #1b7bf0b2;
+      }
     }
   }
 
@@ -37,6 +45,17 @@
     align-items: center;
     gap: 15px;
     margin: 20px 0;
+    label {
+      width: 10%;
+      font-weight: 600;
+    }
+    .imgCourseFile {
+      width: 10%;
+    }
+    textarea {
+      width: 100%;
+      margin-left: 12px;
+    }
   }
 
   &__box {
@@ -71,6 +90,12 @@
         padding: 0 10px;
         display: block;
       }
+      button {
+        border: 0px;
+        background-color: #fff;
+        width: 40%;
+        cursor: pointer;
+      }
     }
   }
 
@@ -95,6 +120,71 @@
       background-color: #e0f3ff;
       color: #227ff4;
       transition: all 0.2s ease-in-out;
+    }
+  }
+
+  @media (max-width: 1440px) {
+    width: 84%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+
+    &__item {
+      label {
+        width: 14%;
+      }
+      .imgCourseFile {
+        width: 13%;
+      }
+      textarea {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  @media (max-width: 820px) {
+    padding: 30px;
+
+    &__item {
+      textarea {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+    &__mainBox {
+      padding: 20px;
+    }
+    &__name p {
+      font-size: 20px;
+    }
+    &__icon {
+      button {
+        font-size: 12px;
+      }
+    }
+    &__item {
+      label {
+        font-size: 12px;
+        width: 18%;
+      }
+      input {
+        font-size: 12px;
+        width: 80%;
+      }
+      select {
+        font-size: 12px;
+      }
+      textarea {
+        height: 80px;
+      }
+    }
+    &__list--item {
+      padding: 8px 8px;
+      font-size: 14px;
     }
   }
 }

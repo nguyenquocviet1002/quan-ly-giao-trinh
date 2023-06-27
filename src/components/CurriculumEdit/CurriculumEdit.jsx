@@ -92,7 +92,7 @@ export default function CurriculumEdit() {
           <div className="currEdit__name">
             <p>{dataCurriculumById.data.data.name}</p>
             <div className="currEdit__icon" onClick={handleSubmit}>
-              <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
+              <button>Lưu</button>
             </div>
           </div>
           <div className="currEdit__box">
@@ -105,7 +105,7 @@ export default function CurriculumEdit() {
                     handleSubmitImage(e.target.files[0]);
                   }}
                 ></input>
-                <img src={dataCurriculumById.data.data.images} alt="" />
+                <img className="imgCourseFile" src={dataCurriculumById.data.data.images} alt="" />
               </div>
               <div className="currEdit__item">
                 <label>Tên giáo trình</label>
@@ -118,15 +118,15 @@ export default function CurriculumEdit() {
                   <option value="private">Private</option>
                 </select>
               </div>
-            </div>
-            <div className="currEdit__box2">
-              <p>Nội dung</p>
-              <textarea
-                cols="50"
-                rows="6"
-                defaultValue={dataCurriculumById.data.data.description}
-                onChange={handleChange('description')}
-              ></textarea>
+              <div className="currEdit__item">
+                <label>Nội dung</label>
+                <textarea
+                  cols="50"
+                  rows="6"
+                  defaultValue={dataCurriculumById.data.data.description}
+                  onChange={handleChange('description')}
+                ></textarea>
+              </div>
             </div>
           </div>
           {/*  */}
@@ -142,10 +142,10 @@ export default function CurriculumEdit() {
                         setIdLesson(item.id);
                       }}
                     >
-                      <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
+                      <img src={`${process.env.PUBLIC_URL}/images/edit-2.png`} alt="" />
                     </button>
                     <button onClick={() => handleDelete(item.id)}>
-                      <img src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+                      <img src={`${process.env.PUBLIC_URL}/images/trash-2.png`} alt="" />
                     </button>
                   </div>
                 </div>

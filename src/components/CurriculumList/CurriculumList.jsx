@@ -17,6 +17,7 @@ const customStyles = {
   head: {
     style: {
       fontSize: '16px',
+      fontWeight: '700',
     },
   },
   headCells: {
@@ -62,27 +63,30 @@ export default function CurriculumList() {
   const columns = [
     {
       name: 'Hình ảnh',
-      selector: (row) => <img width={'100%'} src={row.images} alt="" />,
+      selector: (row) => <img className="imgCurr" width={'100%'} src={row.images} alt="" />,
     },
     {
       name: 'Tên giáo trình',
       selector: (row) => row.name,
       sortable: true,
+      center: true,
     },
     {
       name: 'Trạng thái',
       selector: (row) => row.status,
+      center: true,
     },
     {
       name: 'Hành động',
+      center: true,
       cell: (row) => (
         <div className="currList__box--img">
           <Link to={`/admin/sua-giao-trinh/${row.id}`}>
-            <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
+            <img src={`${process.env.PUBLIC_URL}/images/edit-2.png`} alt="" />
           </Link>
-          <button onClick={() => handleDelete(row.id)}>
-            <img src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
-          </button>
+          <div onClick={() => handleDelete(row.id)}>
+            <img src={`${process.env.PUBLIC_URL}/images/trash-2.png`} alt="" />
+          </div>
         </div>
       ),
     },

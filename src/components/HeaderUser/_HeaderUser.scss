@@ -3,12 +3,16 @@
   box-shadow: 0 1px 10px 0 #00000026;
   &__box {
     display: grid;
-    grid-template-columns: 70% 5% 25%;
+    grid-template-columns: 85% 0% 15%;
     align-items: center;
   }
 
+  &__btncheck {
+    display: none;
+  }
+
   &__logo {
-    width: 15%;
+    width: 12%;
     img {
       width: 100%;
       height: auto;
@@ -50,10 +54,9 @@
     display: none;
     position: absolute;
     top: 100%;
-    width: 180px;
-    background: #eee;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    width: 190px;
+    background: #fff;
+    border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     padding: 0px 10px;
@@ -67,6 +70,9 @@
   }
 
   &__itemMenu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     list-style: none;
     padding: 5px 10px;
     background: #fff;
@@ -75,45 +81,122 @@
     cursor: pointer;
     transition: all 0.2s linear;
     font-size: 14px;
+    border-bottom: 1px solid #eee;
+    &:nth-child(4) {
+      border-bottom: 0px;
+    }
+    img {
+      width: 14%;
+      height: auto;
+    }
 
     &:hover {
-      background: #227ff4;
+      background: #e0f3ff;
       box-shadow: 0 0 2px #00000033;
-      color: #fff;
+      color: #227ff4;
+      a {
+        color: #227ff4;
+      }
+    }
+  }
+
+  @media (max-width: 1440px) {
+    &__box {
+      grid-template-columns: 83% 2% 15%;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    &__dropdown {
+      width: 166px;
+    }
+    &__itemMenu {
+      font-size: 12px;
     }
   }
 
   @media (max-width: 1024px) {
     &__box {
-      grid-template-columns: 55% 5% 40%;
-    }
-
-    &__logo {
-      width: 25%;
+      grid-template-columns: 75% 5% 20%;
     }
 
     &__btn {
       margin-left: 135px;
     }
+
+    &__btncheck {
+      display: block;
+      width: 50px;
+      height: 50px;
+      padding: 14px 20px;
+
+      span {
+        display: block;
+        width: 25px;
+        height: 10px;
+        border-top: 3px solid #227ff4;
+      }
+    }
+
+    &__logo {
+      display: none;
+    }
+
+    &__noti {
+      img {
+        width: 50%;
+        height: 4%;
+      }
+    }
+
+    &__boxUser {
+      align-items: center;
+      .iconUser {
+        width: 11%;
+        height: 4%;
+      }
+    }
   }
 
   @media (max-width: 820px) {
     &__box {
-      grid-template-columns: 50% 5% 45%;
+      grid-template-columns: 70% 5% 25%;
+      padding: 8px 0;
     }
 
-    &__logo {
-      width: 30%;
+    &__noti {
+      img {
+        width: 65%;
+      }
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     &__box {
-      grid-template-columns: 45% 5% 50%;
+      grid-template-columns: 55% 5% 40%;
     }
 
-    &__logo {
-      width: 42%;
+    &__btncheck {
+      padding: 16px 20px;
+      span {
+        height: 8px;
+      }
+    }
+
+    &__noti {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 425px) {
+    &__dropdown {
+      width: 156px;
+      right: 10px;
+    }
+    &__itemMenu {
+      font-size: 11px;
     }
   }
 }
