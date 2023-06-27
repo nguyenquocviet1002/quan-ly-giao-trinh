@@ -1,11 +1,15 @@
 .coursesDetail {
   background-color: #edf0f2;
-  width: 100%;
+  width: 86%;
+
+  &__list {
+    overflow-x: auto;
+  }
 
   &__box {
     background-color: #fff;
     padding: 25px 20px;
-    margin-top: 30px;
+    margin: 30px;
     box-shadow: 0 1px 10px 0 #00000026;
     a {
       color: blue;
@@ -23,6 +27,91 @@
     img {
       width: 2%;
       height: auto;
+    }
+  }
+
+  &__table {
+    th {
+      border-top: 0px;
+      &:nth-child(2) {
+        text-align: center;
+        width: 40%;
+      }
+      &:nth-child(3) {
+        text-align: center;
+        width: 40%;
+      }
+    }
+
+    td {
+      vertical-align: middle;
+      &:nth-child(2) {
+        text-align: center;
+      }
+      &:nth-child(3) {
+        text-align: center;
+      }
+    }
+
+    tbody {
+      tr:hover {
+        background-color: #e0f3ff;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    @media (max-width: 820px) {
+      td {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      th {
+        font-size: 12px;
+      }
+    }
+  }
+
+  @media (max-width: 1440px) {
+    width: 85%;
+  }
+
+  @media (max-width: 1280px) {
+    width: 84%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+
+  @media (max-width: 820px) {
+    &__box {
+      margin: 25px;
+      a {
+        font-size: 12px;
+      }
+    }
+
+    &__title {
+      img {
+        width: 3%;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__box {
+      margin: 18px;
+      padding: 15px 20px;
+    }
+
+    &__title {
+      margin: 12px 0;
+      font-size: 16px;
+      img {
+        width: 5%;
+      }
     }
   }
 }

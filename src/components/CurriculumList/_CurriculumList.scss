@@ -1,6 +1,6 @@
 .currList {
   background-color: #edf0f2;
-  width: 100%;
+  width: 86%;
   padding: 0 50px;
   &__btn {
     button {
@@ -23,6 +23,10 @@
     background-color: #fff;
     padding: 25px 20px;
     box-shadow: 0 1px 10px 0 #00000026;
+
+    .imgCurr {
+      width: 40%;
+    }
   }
 
   &__box {
@@ -37,6 +41,7 @@
         width: 20px;
         height: auto;
         display: block;
+        cursor: pointer;
       }
     }
   }
@@ -48,23 +53,31 @@
       height: auto;
     }
   }
-}
 
-.table {
-  th {
-    border-top: 0px;
-    &:nth-child(3) {
-      text-align: center;
-    }
-    &:nth-child(4) {
-      text-align: center;
-    }
-  }
-
-  td {
-    vertical-align: middle;
-    &:nth-child(3) {
-      text-align: center;
+  @media (max-width: 820px) {
+    &__table {
+      .imgCurr {
+        width: 60%;
+      }
     }
   }
 }
+
+// .table {
+//   th {
+//     border-top: 0px;
+//     &:nth-child(3) {
+//       text-align: center;
+//     }
+//     &:nth-child(4) {
+//       text-align: center;
+//     }
+//   }
+
+//   td {
+//     vertical-align: middle;
+//     &:nth-child(3) {
+//       text-align: center;
+//     }
+//   }
+// }

@@ -49,10 +49,7 @@
   }
 
   @media (max-width: 1024px) {
-    width: 26%;
-  }
-
-  @media (max-width: 820px) {
     width: 35%;
+    display: none;
   }
 }

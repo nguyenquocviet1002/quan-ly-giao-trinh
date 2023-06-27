@@ -15,6 +15,7 @@ const customStyles = {
   head: {
     style: {
       fontSize: '16px',
+      fontWeight: '700',
     },
   },
   headCells: {
@@ -93,9 +94,11 @@ export default function Students() {
     {
       name: 'Email',
       selector: (row) => row.email,
+      center: true,
     },
     {
       name: 'Trạng thái',
+      center: true,
       selector: (row) => (
         <select defaultValue={row.status} onChange={(event) => handleUpdate(row.id, event.target.value)}>
           <option value="true">Active</option>
@@ -105,9 +108,10 @@ export default function Students() {
     },
     {
       name: 'Hành động',
+      center: true,
       selector: (row) => (
         <div className="students__box--img" onClick={() => handleDelete(row.id)}>
-          <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+          <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/trash-2.png`} alt="" />
         </div>
       ),
     },

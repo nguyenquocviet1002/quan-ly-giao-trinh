@@ -18,6 +18,7 @@ const customStyles = {
   head: {
     style: {
       fontSize: '16px',
+      fontWeight: '700',
     },
   },
   headCells: {
@@ -72,20 +73,23 @@ export default function Users() {
     {
       name: 'Email',
       selector: (row) => row.email,
+      center: true,
     },
     {
       name: 'Team',
       selector: (row) => filterById(row.department_id, dataDepartment.data.data),
+      center: true,
     },
     {
       name: 'Hành động',
+      center: true,
       selector: (row) => (
         <div className="users__box--img">
           {/* <Link to="/admin/sua-tai-khoan">
             <img src={`${process.env.PUBLIC_URL}/images/edit.png`} alt="" />
           </Link> */}
           <div className="students__box--img" onClick={() => handleDelete(row.id)}>
-            <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/delete.png`} alt="" />
+            <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/trash-2.png`} alt="" />
           </div>
         </div>
       ),

@@ -52,7 +52,9 @@ export default function ModalAddLesson({ isShowing, hide, element, id }) {
         <div className="currChildEdit">
           <div className="container">
             <div className="currChildEdit__box">
-              <div onClick={hide}>X</div>
+              <div className="currChildEdit__hide" onClick={hide}>
+                X
+              </div>
               <h3 className="currChildEdit__title">Thêm bài giảng</h3>
               <div className="currChildEdit__item">
                 <label>Tên bài giảng</label>
