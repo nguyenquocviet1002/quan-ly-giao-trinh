@@ -1,11 +1,11 @@
 export const MENU_ADMIN = [
     {
-        title: 'Thống kê giáo trình',
+        title: 'Thống kê chuyên mục',
         link: '/admin/thong-ke-giao-trinh',
         icon: '/images/bookmark.png'
     },
     {
-        title: 'Giáo trình',
+        title: 'Tài liệu',
         link: '/admin/giao-trinh',
         icon: '/images/agenda.png'
     },
@@ -23,12 +23,12 @@ export const MENU_ADMIN = [
 
 export const MENU_SUB_ADMIN = [
     {
-        title: 'Thống kê giáo trình',
+        title: 'Thống kê chuyên mục',
         link: '/admin/thong-ke-giao-trinh',
         icon: '/images/bookmark.png'
     },
     {
-        title: 'Giáo trình',
+        title: 'Tài liệu',
         link: '/admin/giao-trinh',
         icon: '/images/agenda.png'
     },

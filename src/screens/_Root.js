@@ -9,6 +9,7 @@ import ScreenDashboard from './Dashboard';
 import CurriculumList from '@/components/CurriculumList';
 import CurriculumAdd from '@/components/CurriculumAdd';
 import CurriculumEdit from '@/components/CurriculumEdit';
+import CurriculumSee from '@/components/CurriculumSee';
 import CurriculumChildEdit from '@/components/CurriculumChildEdit';
 import Students from '@/components/Students';
 import Users from '@/components/Users';
@@ -43,6 +44,7 @@ const ScreenRoot = () => {
                                 <Route path='giao-trinh' element={<CurriculumList />} />
                                 <Route path='them-giao-trinh' element={<CurriculumAdd />} />
                                 <Route path='sua-giao-trinh/:id' element={<CurriculumEdit />} />
+                                <Route path='xem-giao-trinh/:id' element={<CurriculumSee />} />
                                 <Route path='sua-bai-hoc/:id' element={<CurriculumChildEdit />} />
                                 <Route path='quan-ly-hoc-vien' element={<Students />} />
                             </Route>
@@ -53,6 +55,7 @@ const ScreenRoot = () => {
                                 <Route path='giao-trinh' element={<CurriculumList />} />
                                 <Route path='them-giao-trinh' element={<CurriculumAdd />} />
                                 <Route path='sua-giao-trinh/:id' element={<CurriculumEdit />} />
+                                <Route path='xem-giao-trinh/:id' element={<CurriculumSee />} />
                                 <Route path='sua-bai-hoc/:id' element={<CurriculumChildEdit />} />
                                 <Route path='quan-ly-hoc-vien' element={<Students />} />
                                 <Route path='danh-sach-tai-khoan' element={<Users />} />

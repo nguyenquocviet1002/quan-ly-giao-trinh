@@ -1,20 +1,27 @@
 .login {
-  background: linear-gradient(118deg, #227ff4, rgba(34, 127, 244, 0.698));
+  background: #f4f4f4;
   display: flex;
   align-items: center;
   height: 100vh;
+
+  &__boxMain {
+    width: 100%;
+  }
 
   &__box {
     display: flex;
     overflow: hidden;
     border-radius: 10px;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
     background: #fff;
-    padding: 50px 0;
+    padding: 45px 0;
+    gap: 30px;
+    max-width: 350px;
+    margin: 0 auto;
   }
   &__pic {
-    width: 60%;
+    width: 45%;
     img {
       width: 100%;
       height: auto;
@@ -22,10 +29,10 @@
     }
   }
   &__detail {
-    width: 40%;
+    width: 90%;
   }
   &__form {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
   }
   &__title {
@@ -33,19 +40,20 @@
     span {
       font-size: 26px;
       text-align: left;
-      border-bottom: 3px solid #2386c7;
+      border-bottom: 3px solid #deb97b;
       font-weight: 600;
-      color: #2386c7;
+      color: #deb97b;
     }
   }
   &__input {
     input {
       width: 100%;
-      padding: 10px;
+      padding: 10px 15px;
       margin: 0 0 10px;
       border-radius: 25px;
-      border: 1px solid #2386c7;
-      color: #6f8cbe;
+      border: 0;
+      color: #a2a2a2;
+      background-color: #f4f4f4;
     }
   }
   &__checkbox {
@@ -56,59 +64,34 @@
   &__button {
     button {
       width: 100%;
-      background: #2386c7;
+      background: #deb97b;
       padding: 10px;
       border: none;
-      margin: 10px 0 0;
       border-radius: 25px;
       color: #fff;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 16px;
       cursor: pointer;
     }
   }
   &__regist {
     text-align: center;
-    color: #2386c7;
+    color: #deb97b;
     font-weight: 500;
     font-style: italic;
     margin-top: 15px;
     text-decoration: underline;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     &__pic {
-      width: 50%;
-    }
-    &__detail {
-      width: 50%;
-    }
-    &__title span {
-      font-size: 20px;
-    }
-    &__input input {
-      padding: 4px 12px;
-      font-size: 15px;
-    }
-    &__button button {
-      padding: 6px;
-      font-size: 15px;
+      width: 40%;
     }
   }
 
-  @media (max-width: 480px) {
-    &__box {
-      flex-direction: column;
-      gap: 18px;
-    }
+  @media (max-width: 768px) {
     &__pic {
-      width: 80%;
-    }
-    &__detail {
-      width: 100%;
-    }
-    &__title {
-      text-align: center;
+      width: 46%;
     }
   }
 }

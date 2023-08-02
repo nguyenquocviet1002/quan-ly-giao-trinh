@@ -1,5 +1,17 @@
 .sidebar {
   width: 14%;
+  // box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+  z-index: 9999;
+  position: fixed;
+  background-color: #243648;
+  &__logo {
+    img {
+      width: 60%;
+      height: auto;
+      margin: 30px auto;
+      display: block;
+    }
+  }
   ul {
     padding: 0 20px;
     margin: 0;
@@ -19,22 +31,24 @@
     margin: 10px 0;
     cursor: pointer;
     font-size: 16px;
-    &:hover {
-      transition: all 0.2s ease-in-out;
-      background-color: #e0f3ff;
-    }
+    // &:hover {
+    //   transition: all 0.2s ease-in-out;
+    //   background-color: #e0f3ff;
+    // }
 
     a {
       display: flex;
       align-items: center;
       gap: 5px;
+      color: #fff;
       &:hover {
-        color: #227ff4;
+        transition: all 0.2s ease-in-out;
+        color: #d8ac62;
       }
     }
 
     img {
-      width: 14px;
+      width: 24px;
       height: auto;
       display: block;
     }
@@ -42,11 +56,19 @@
 
   @media (max-width: 1440px) {
     width: 16%;
+    ul {
+      padding: 0 6px;
+    }
   }
 
   @media (max-width: 1280px) {
-    ul {
-      padding: 0 12px;
+    &__item {
+      a {
+        font-size: 15px;
+      }
+      img {
+        width: 20px;
+      }
     }
   }
 

@@ -11,11 +11,7 @@ export default function Header() {
           <span></span>
           <span></span>
         </div>
-        <div className="header__logo">
-          <Link to="/">
-            <img width="128" height="80" src={`${process.env.PUBLIC_URL}/images/logo-sci.svg`} alt="" />
-          </Link>
-        </div>
+        <div className="header__hollow"></div>
         <div className="header__noti">
           <img width="30" height="30" src={`${process.env.PUBLIC_URL}/images/icon-bell.png`} alt="" />
         </div>

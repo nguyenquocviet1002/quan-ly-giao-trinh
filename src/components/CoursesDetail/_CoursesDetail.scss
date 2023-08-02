@@ -1,6 +1,9 @@
 .coursesDetail {
   background-color: #edf0f2;
   width: 86%;
+  height: 100vh;
+  margin-left: 14%;
+  padding-top: 66px;
 
   &__list {
     overflow-x: auto;
@@ -8,16 +11,17 @@
 
   &__box {
     background-color: #fff;
-    padding: 25px 20px;
-    margin: 30px;
-    box-shadow: 0 1px 10px 0 #00000026;
+    padding: 25px;
+    margin: 30px 100px;
+    border-radius: 6px;
+    box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
     a {
-      color: blue;
+      color: #d8ac62;
     }
   }
 
   &__title {
-    margin: 20px 0;
+    margin: 0 0 15px;
     width: 80%;
     display: flex;
     align-items: center;
@@ -33,13 +37,14 @@
   &__table {
     th {
       border-top: 0px;
+      width: 80%;
       &:nth-child(2) {
         text-align: center;
-        width: 40%;
+        width: 10%;
       }
       &:nth-child(3) {
         text-align: center;
-        width: 40%;
+        width: 10%;
       }
     }
 
@@ -47,20 +52,43 @@
       vertical-align: middle;
       &:nth-child(2) {
         text-align: center;
+        width: 100px;
       }
       &:nth-child(3) {
         text-align: center;
+        width: 100px;
       }
     }
 
     tbody {
       tr:hover {
-        background-color: #e0f3ff;
+        background-color: #fef3db;
         transition: all 0.2s ease-in-out;
       }
     }
 
+    @media (max-width: 1440px) {
+      th {
+        width: 70%;
+        &:nth-child(2) {
+          width: 15%;
+        }
+        &:nth-child(3) {
+          width: 15%;
+        }
+      }
+    }
+
     @media (max-width: 820px) {
+      th {
+        width: 60%;
+        &:nth-child(2) {
+          width: 20%;
+        }
+        &:nth-child(3) {
+          width: 20%;
+        }
+      }
       td {
         font-size: 12px;
       }
@@ -74,15 +102,25 @@
   }
 
   @media (max-width: 1440px) {
-    width: 85%;
+    width: 84%;
+    margin-left: 16%;
+    &__title {
+      img {
+        width: 3%;
+      }
+    }
   }
 
   @media (max-width: 1280px) {
     width: 84%;
+    &__box {
+      margin: 30px 70px;
+    }
   }
 
   @media (max-width: 1024px) {
     width: 100%;
+    margin-left: 0;
   }
 
   @media (max-width: 820px) {
@@ -102,7 +140,7 @@
 
   @media (max-width: 480px) {
     &__box {
-      margin: 18px;
+      margin: 22px;
       padding: 15px 20px;
     }
 

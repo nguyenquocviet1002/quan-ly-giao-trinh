@@ -1,4 +1,4 @@
-.currEdit {
+.currSee {
   background-color: #edf0f2;
   width: 86%;
   height: 102vh;
@@ -96,7 +96,7 @@
       // border: 1px solid #ccc;
       padding: 8px 5px;
       margin: 10px 0;
-      border-radius: 9px;
+      border-radius: 6px;
       // box-shadow: 0 1px 5px 0 #00000026;
       background-color: #f4f4f4;
 
@@ -128,7 +128,7 @@
     gap: 5px;
     padding: 8px 0;
     cursor: pointer;
-    border-radius: 9px;
+    border-radius: 6px;
     box-shadow: 0 1px 5px 0 #00000026;
 
     img {
@@ -157,9 +157,6 @@
 
   @media (max-width: 1280px) {
     padding: 90px 88px 0;
-    &__mainBox {
-      padding: 18px 30px 16px;
-    }
   }
 
   @media (max-width: 1024px) {

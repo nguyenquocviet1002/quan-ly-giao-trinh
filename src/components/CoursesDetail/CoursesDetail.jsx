@@ -11,13 +11,13 @@ export default function CoursesDetail() {
       <div className="coursesDetail__box">
         <div className="coursesDetail__title">
           <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/agenda.png`} alt="" />
-          Giáo trình JS
+          Tài liệu Kangnam
         </div>
         <div className="coursesDetail__list">
           <table className="table table-striped table-bordered coursesDetail__table">
             <thead>
               <tr>
-                <th>Tên giáo trình</th>
+                <th>Tên tài liệu</th>
                 <th>Link download</th>
                 <th>Link câu hỏi</th>
               </tr>
@@ -28,10 +28,10 @@ export default function CoursesDetail() {
                   <tr key={index}>
                     <td className="currList__box">{item.name}</td>
                     <td className="currList__box">
-                      <a href={item.lesson_link}>Xem thêm</a>
+                      <a href={item.lesson_link}>Tải về</a>
                     </td>
                     <td className="currList__box">
-                      <a href={item.question_group_link}>Xem thêm</a>
+                      <a href={item.question_group_link}>Tải về</a>
                     </td>
                   </tr>
                 ))}

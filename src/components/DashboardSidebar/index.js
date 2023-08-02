@@ -6,8 +6,12 @@ import './dashboardsidebar.scss';
 function DashboardSidebar({ role }) {
     return (
         <div className="sidebar">
+            <div className="sidebar__logo">
+                <Link to="/">
+                    <img width="128" height="80" src={`${process.env.PUBLIC_URL}/images/logo.svg`} alt="" />
+                </Link>
+            </div>
             <ul>
-                <h3 className="sidebar__title">Menu</h3>
                 {role === "ADMIN" ? MENU_ADMIN.map((item, index) => (
                     <li key={index} className="sidebar__item">
                         <Link to={item.link}>

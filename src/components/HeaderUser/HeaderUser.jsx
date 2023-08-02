@@ -32,11 +32,7 @@ export default function HeaderUser() {
           <span></span>
           <span></span>
         </div>
-        <div className="headerUser__logo">
-          <Link to="/">
-            <img width="128" height="80" src={`${process.env.PUBLIC_URL}/images/logo-sci.svg`} alt="" />
-          </Link>
-        </div>
+        <div className="header__hollow"></div>
         <div className="headerUser__noti">
           <img width="30" height="30" src={`${process.env.PUBLIC_URL}/images/icon-bell.png`} alt="" />
         </div>
@@ -55,13 +51,7 @@ export default function HeaderUser() {
             <ul>
               {isSuccessUser && (dataUser.data.data.role === 'ADMIN' || dataUser.data.data.role === 'SUB_ADMIN') && (
                 <li className="headerUser__itemMenu">
-                  <img
-                    className="iconUserRole"
-                    width="48"
-                    height="48"
-                    src={`${process.env.PUBLIC_URL}/images/user-role.png`}
-                    alt=""
-                  />
+                  <i className="icon-user-4"></i>
                   <Link to="/admin" style={{ display: 'block' }}>
                     Admin
                   </Link>
@@ -69,33 +59,15 @@ export default function HeaderUser() {
               )}
 
               <li className="headerUser__itemMenu">
-                <img
-                  className="iconProfile"
-                  width="48"
-                  height="48"
-                  src={`${process.env.PUBLIC_URL}/images/profile.png`}
-                  alt=""
-                />
-                Thông tin cá nhân
+                <i className="icon-user-4"></i>
+                Hồ sơ cá nhân
               </li>
               <li className="headerUser__itemMenu">
-                <img
-                  className="iconPass"
-                  width="48"
-                  height="48"
-                  src={`${process.env.PUBLIC_URL}/images/password.png`}
-                  alt=""
-                />
+                <i className="icon-lock"></i>
                 Đổi mật khẩu
               </li>
               <li className="headerUser__itemMenu" onClick={() => handleLogout()}>
-                <img
-                  className="iconLogout"
-                  width="48"
-                  height="48"
-                  src={`${process.env.PUBLIC_URL}/images/log-out.png`}
-                  alt=""
-                />
+                <i className="icon-logout"></i>
                 Đăng xuất
               </li>
             </ul>

@@ -53,16 +53,18 @@ export default function ModalAddLesson({ isShowing, hide, element, id }) {
           <div className="container">
             <div className="currChildEdit__box">
               <div className="currChildEdit__hide" onClick={hide}>
-                X
+                <img src={`${process.env.PUBLIC_URL}/images/icon-hide.png`} alt="" />
               </div>
               <h3 className="currChildEdit__title">Thêm bài giảng</h3>
               <div className="currChildEdit__item">
+                <i className="icon-book"></i>
                 <label>Tên bài giảng</label>
                 <br />
                 <input type="text" onChange={handleChange('name')} />
               </div>
               <div className="currChildEdit__item">
-                <label>Giáo trình</label>
+                <i className="icon-book"></i>
+                <label>Tải tài liệu</label>
                 <br />
                 <input
                   type="file"
@@ -72,6 +74,7 @@ export default function ModalAddLesson({ isShowing, hide, element, id }) {
                 />
               </div>
               <div className="currChildEdit__item">
+                <i className="icon-book"></i>
                 <label>Bài tập</label>
                 <br />
                 <input

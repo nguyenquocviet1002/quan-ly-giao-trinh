@@ -63,26 +63,38 @@ export default function CurriculumList() {
   const columns = [
     {
       name: 'Hình ảnh',
+      width: '10%',
+      compact: true,
       selector: (row) => <img className="imgCurr" width={'100%'} src={row.images} alt="" />,
     },
     {
-      name: 'Tên giáo trình',
+      name: 'Tên tài liệu',
       selector: (row) => row.name,
       sortable: true,
+      grow: 0.7,
+    },
+    {
+      name: 'Dung lượng',
       center: true,
+      width: '10%',
     },
     {
       name: 'Trạng thái',
       selector: (row) => row.status,
       center: true,
+      width: '10%',
     },
     {
       name: 'Hành động',
       center: true,
+      width: '10%',
       cell: (row) => (
         <div className="currList__box--img">
           <Link to={`/admin/sua-giao-trinh/${row.id}`}>
             <img src={`${process.env.PUBLIC_URL}/images/edit-2.png`} alt="" />
+          </Link>
+          <Link to={`/admin/xem-giao-trinh/${row.id}`}>
+            <img src={`${process.env.PUBLIC_URL}/images/eyes-2.png`} alt="" />
           </Link>
           <div onClick={() => handleDelete(row.id)}>
             <img src={`${process.env.PUBLIC_URL}/images/trash-2.png`} alt="" />
@@ -94,12 +106,25 @@ export default function CurriculumList() {
 
   return (
     <div className="currList">
-      <div className="currList__btn">
-        <Link to="/admin/them-giao-trinh">
-          <button>Thêm</button>
-        </Link>
-      </div>
       <div className="currList__table">
+        <div className="currList__btn">
+          <div className="currList__title">Danh sách tài liệu</div>
+          <Link to="/admin/them-giao-trinh">
+            <button>Thêm</button>
+          </Link>
+        </div>
+        <div className="currList__boxSearch">
+          <div className="currList__filter">
+            <p>Khoảng ngày</p>
+            <input type="date" />
+            <input type="date" />
+            <i className="icon-search-1"></i>
+          </div>
+          <div className="currList__search">
+            <input type="text" placeholder="Tìm kiếm" />
+            <i className="icon-search-1"></i>
+          </div>
+        </div>
         {isSuccessCurriculumDepartment && (
           <DataTable
             columns={columns}
