@@ -44,28 +44,30 @@ export default function Login() {
   return (
     <div className="login">
       <div className="container">
-        <div className="login__box">
-          <div className="login__pic">
-            <img src={`${process.env.PUBLIC_URL}/images/logo-sci.svg`} alt="" />
-          </div>
-          <div className="login__detail">
-            <div className="login__form">
-              <div className="login__title">
+        <div className="login__boxMain">
+          <div className="login__box">
+            <div className="login__pic">
+              <img src={`${process.env.PUBLIC_URL}/images/logo.svg`} alt="" />
+            </div>
+            <div className="login__detail">
+              <div className="login__form">
+                {/* <div className="login__title">
                 <span>ĐĂNG NHẬP</span>
-              </div>
-              <div className="login__input">
-                <input type="text" placeholder="Email người dùng" onChange={handleChange('email')} />
-              </div>
-              <div className="login__input">
-                <input type="password" placeholder="Mật khẩu" onChange={handleChange('password')} />
-              </div>
-              <div className="login__button" onClick={() => handleSubmit()}>
-                <button>Đăng nhập</button>
-              </div>
-              <div className="login__checkbox">
-                <Link to="/register">
-                  <p className="login__regist">Đăng ký</p>
-                </Link>
+              </div> */}
+                <div className="login__input">
+                  <input type="text" placeholder="Email người dùng" onChange={handleChange('email')} />
+                </div>
+                <div className="login__input">
+                  <input type="password" placeholder="Mật khẩu" onChange={handleChange('password')} />
+                </div>
+                <div className="login__button" onClick={() => handleSubmit()}>
+                  <button>Đăng nhập</button>
+                </div>
+                <div className="login__checkbox">
+                  <Link to="/register">
+                    <p className="login__regist">Đăng ký</p>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

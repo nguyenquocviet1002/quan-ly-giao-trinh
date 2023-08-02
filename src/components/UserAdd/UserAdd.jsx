@@ -57,7 +57,7 @@ export default function UserAdd() {
             <input type="text" value={infoRegister.email} onChange={handleChange('email')} />
           </div>
           <div className="userAdd__item">
-            <label>Tên</label>
+            <label>Họ tên</label>
             <input type="text" value={infoRegister.name} onChange={handleChange('name')} />
           </div>
           <div className="userAdd__item">

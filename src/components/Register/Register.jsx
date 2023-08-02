@@ -50,57 +50,64 @@ export default function Register() {
   return (
     <div className="regist">
       <div className="container">
-        <div className="regist__box">
-          <div className="regist__pic">
-            <img src={`${process.env.PUBLIC_URL}/images/logo-sci.svg`} alt="" />
-          </div>
-          <div className="regist__detail">
-            <div className="regist__form">
-              <div className="regist__title">
-                <span>ĐĂNG KÝ</span>
-              </div>
-              <div className="regist__input">
-                <input
-                  type="text"
-                  placeholder="Nhập email"
-                  value={infoRegister.email}
-                  onChange={handleChange('email')}
-                />
-              </div>
-              <div className="regist__input">
-                <input type="text" placeholder="Họ và tên" value={infoRegister.name} onChange={handleChange('name')} />
-              </div>
-              <div className="regist__input">
-                <input
-                  type="password"
-                  placeholder="Nhập mật khẩu"
-                  value={infoRegister.password}
-                  onChange={handleChange('password')}
-                />
-              </div>
-              <div className="regist__input">
-                <input
-                  type="password"
-                  placeholder="Nhập lại mật khẩu"
-                  value={infoRegister.c_password}
-                  onChange={handleChange('c_password')}
-                />
-              </div>
-              <div className="regist__select">
-                <select onChange={handleChange('department_id')}>
-                  <option>--- Chọn giáo trình ---</option>
-                  {isSuccessDepartment &&
-                    dataDepartment.data.data.map((item, index) => (
-                      <option key={index} value={item.id}>
-                        {item.name}
-                      </option>
-                    ))}
-                </select>
-              </div>
-              <div className="regist__button">
-                <button type="submit" onClick={() => handleSubmit()}>
-                  Đăng ký
-                </button>
+        <div className="regist__boxMain">
+          <div className="regist__box">
+            <div className="regist__pic">
+              <img src={`${process.env.PUBLIC_URL}/images/logo.svg`} alt="" />
+            </div>
+            <div className="regist__detail">
+              <div className="regist__form">
+                {/* <div className="regist__title">
+                  <span>ĐĂNG KÝ</span>
+                </div> */}
+                <div className="regist__input">
+                  <input
+                    type="text"
+                    placeholder="Nhập email"
+                    value={infoRegister.email}
+                    onChange={handleChange('email')}
+                  />
+                </div>
+                <div className="regist__input">
+                  <input
+                    type="text"
+                    placeholder="Họ và tên"
+                    value={infoRegister.name}
+                    onChange={handleChange('name')}
+                  />
+                </div>
+                <div className="regist__input">
+                  <input
+                    type="password"
+                    placeholder="Nhập mật khẩu"
+                    value={infoRegister.password}
+                    onChange={handleChange('password')}
+                  />
+                </div>
+                <div className="regist__input">
+                  <input
+                    type="password"
+                    placeholder="Nhập lại mật khẩu"
+                    value={infoRegister.c_password}
+                    onChange={handleChange('c_password')}
+                  />
+                </div>
+                <div className="regist__select">
+                  <select onChange={handleChange('department_id')}>
+                    <option>--- Chọn giáo trình ---</option>
+                    {isSuccessDepartment &&
+                      dataDepartment.data.data.map((item, index) => (
+                        <option key={index} value={item.id}>
+                          {item.name}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                <div className="regist__button">
+                  <button type="submit" onClick={() => handleSubmit()}>
+                    Đăng ký
+                  </button>
+                </div>
               </div>
             </div>
           </div>

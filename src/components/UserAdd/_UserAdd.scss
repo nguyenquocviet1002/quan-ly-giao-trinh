@@ -1,17 +1,20 @@
 .userAdd {
   background-color: #edf0f2;
-  width: 100%;
-  padding: 35px 50px;
+  width: 86%;
+  height: 102vh;
+  padding: 100px 130px 0;
+  margin-left: 14%;
 
   &__mainBox {
     background-color: #fff;
-    padding: 30px;
+    padding: 25px;
     box-shadow: 0 1px 10px 0 #00000026;
+    border-radius: 6px;
   }
   &__title {
     font-size: 22px;
     font-weight: 600;
-    color: #227ff4;
+    color: #d8ac62;
     margin: 0 0 12px 0;
   }
 
@@ -19,8 +22,23 @@
     display: flex;
     align-items: flex-start;
     gap: 6px;
-    margin: 12px 0;
+    margin: 12px 0 2px;
     flex-direction: column;
+    width: 100%;
+    label {
+      font-weight: 600;
+    }
+    input[type='text'] {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+    select {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
   }
 
   &__box {
@@ -33,17 +51,53 @@
   &__btn {
     button {
       margin: 12px 0px;
-      font-size: 16px;
-      padding: 8px 15px;
-      border-radius: 10px;
+      font-size: 14px;
+      padding: 6px 15px;
+      border-radius: 8px;
       color: #fff;
       border: none;
-      background: linear-gradient(118deg, #227ff4, #227ff4b2);
+      background: #d8ac62;
       cursor: pointer;
       &:hover {
         transition: all 0.2s ease-in-out;
-        background-color: #1b7bf0b2;
+        background-color: rgb(202, 148, 47);
       }
+    }
+  }
+
+  @media (max-width: 1440px) {
+    width: 84%;
+    padding: 90px 80px 0;
+    margin-left: 16%;
+
+    &__btn button {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  @media (max-width: 820px) {
+    &__title {
+      font-size: 20px;
+    }
+    &__item {
+      select {
+        font-size: 12px;
+      }
+    }
+    &__btn button {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 88px 40px 0;
+    &__item {
+      margin: 8px 0;
     }
   }
 }

@@ -5,11 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useUploadImage } from '@/services/fileService';
 import { useGetCurriculumById, useUpdateCurriculum } from '@/services/curriculumService';
-import { useDeleteLesson, useGetLessonByCurr } from '@/services/lessonService';
-import { useModal } from '@/hooks/useModal';
-import ModalAddLesson from '../ModalAddLesson';
 import './_CurriculumEdit.scss';
-import ModalEditLesson from '../ModalEditLesson';
 
 export default function CurriculumEdit() {
   const { id } = useParams();
@@ -25,7 +21,6 @@ export default function CurriculumEdit() {
   };
 
   const [infoCurr, setInfoCurr] = useState(initialCurr);
-  const [idLesson, setIdLesson] = useState('');
 
   useEffect(() => {
     if (isSuccessCurriculumById) {
@@ -43,15 +38,12 @@ export default function CurriculumEdit() {
 
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useLocalStorage('token', null);
-  const { isShowing, cpn, toggle } = useModal();
 
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const { dataLessonByCurr, isSuccessLessonByCurr } = useGetLessonByCurr(id);
   const { mutateUploadImage } = useUploadImage();
   const { mutateUpdateCurr } = useUpdateCurriculum(token, id);
-  const { mutateDeleteLesson } = useDeleteLesson(token);
 
   const handleChange = (name) => (event) => {
     setInfoCurr((prev) => ({ ...prev, [name]: event.target.value }));
@@ -77,13 +69,13 @@ export default function CurriculumEdit() {
     });
   };
 
-  const handleDelete = (id) => {
-    mutateDeleteLesson(id, {
-      onSuccess: (data) => {
-        queryClient.invalidateQueries({ queryKey: ['lessonByCurr', Number(data.data.data.curriculum_id)] });
-      },
-    });
-  };
+  // const handleDelete = (id) => {
+  //   mutateDeleteLesson(id, {
+  //     onSuccess: (data) => {
+  //       queryClient.invalidateQueries({ queryKey: ['lessonByCurr', Number(data.data.data.curriculum_id)] });
+  //     },
+  //   });
+  // };
 
   return (
     isSuccessCurriculumById && (
@@ -91,46 +83,51 @@ export default function CurriculumEdit() {
         <div className="currEdit__mainBox">
           <div className="currEdit__name">
             <p>{dataCurriculumById.data.data.name}</p>
-            <div className="currEdit__icon" onClick={handleSubmit}>
-              <button>Lưu</button>
-            </div>
           </div>
           <div className="currEdit__box">
             <div className="currEdit__box1">
               <div className="currEdit__item">
                 <label>Hình ảnh</label>
-                <input
-                  type="file"
-                  onChange={(e) => {
-                    handleSubmitImage(e.target.files[0]);
-                  }}
-                ></input>
-                <img className="imgCourseFile" src={dataCurriculumById.data.data.images} alt="" />
+                <div className="currEdit__right">
+                  <div className="currEdit__img">
+                    <input
+                      type="file"
+                      onChange={(e) => {
+                        handleSubmitImage(e.target.files[0]);
+                      }}
+                    ></input>
+                    <img className="imgCourseFile" src={dataCurriculumById.data.data.images} alt="" />
+                  </div>
+                </div>
               </div>
               <div className="currEdit__item">
-                <label>Tên giáo trình</label>
-                <input type="text" defaultValue={dataCurriculumById.data.data.name} onChange={handleChange('name')} />
+                <label>Tên tài liệu</label>
+                <div className="currEdit__right">
+                  <input type="text" defaultValue={dataCurriculumById.data.data.name} onChange={handleChange('name')} />
+                </div>
               </div>
               <div className="currEdit__item">
                 <label>Trạng thái</label>
-                <select defaultValue={dataCurriculumById.data.data.status} onChange={handleChange('status')}>
-                  <option value="public">Public</option>
-                  <option value="private">Private</option>
-                </select>
+                <div className="currEdit__right">
+                  <select defaultValue={dataCurriculumById.data.data.status} onChange={handleChange('status')}>
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                  </select>
+                </div>
               </div>
               <div className="currEdit__item">
-                <label>Nội dung</label>
-                <textarea
-                  cols="50"
-                  rows="6"
-                  defaultValue={dataCurriculumById.data.data.description}
-                  onChange={handleChange('description')}
-                ></textarea>
+                <label>Mô tả</label>
+                <div className="currEdit__right">
+                  <textarea
+                    defaultValue={dataCurriculumById.data.data.description}
+                    onChange={handleChange('description')}
+                  ></textarea>
+                </div>
               </div>
             </div>
           </div>
           {/*  */}
-          <div className="currEdit__list">
+          {/* <div className="currEdit__list">
             {isSuccessLessonByCurr &&
               dataLessonByCurr.data.data.map((item, index) => (
                 <div key={index} className="currEdit__list--item">
@@ -154,12 +151,11 @@ export default function CurriculumEdit() {
           <div className="currEdit__addItem" onClick={() => toggle('ModalAddLesson')}>
             <img src={`${process.env.PUBLIC_URL}/images/plus.png`} alt="" />
             Thêm mới
+          </div> */}
+          <div className="currEdit__icon" onClick={handleSubmit}>
+            <button>Lưu</button>
           </div>
         </div>
-        <ModalAddLesson isShowing={isShowing} hide={toggle} element={cpn} id={id} />
-        {isShowing && cpn === 'ModalEditLesson' && (
-          <ModalEditLesson isShowing={isShowing} hide={toggle} element={cpn} id={idLesson} />
-        )}
       </div>
     )
   );

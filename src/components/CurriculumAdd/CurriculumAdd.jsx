@@ -63,11 +63,26 @@ export default function CurriculumAdd() {
   return (
     <div className="currAdd">
       <div className="currAdd__mainBox">
-        <h3 className="currAdd__title">Thêm giáo trình</h3>
+        <h3 className="currAdd__title">Thêm tài liệu</h3>
         <div className="currAdd__box">
-          <div className="currAdd__box1">
-            <div className="currAdd__item">
-              <label>Hình ảnh</label>
+          <div className="currAdd__item">
+            <label>Tên tài liệu</label>
+            <div className="currAdd__right">
+              <input type="text" onChange={handleChange('name')} />
+            </div>
+          </div>
+          <div className="currAdd__item">
+            <label>Trạng thái</label>
+            <div className="currAdd__right">
+              <select onChange={handleChange('status')}>
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+              </select>
+            </div>
+          </div>
+          <div className="currAdd__item">
+            <label>Hình ảnh</label>
+            <div className="currAdd__right">
               <input
                 type="file"
                 onChange={(e) => {
@@ -75,21 +90,12 @@ export default function CurriculumAdd() {
                 }}
               ></input>
             </div>
-            <div className="currAdd__item">
-              <label>Tên giáo trình</label>
-              <input type="text" onChange={handleChange('name')} />
-            </div>
-            <div className="currAdd__item">
-              <label>Trạng thái</label>
-              <select onChange={handleChange('status')}>
-                <option value="public">Public</option>
-                <option value="private">Private</option>
-              </select>
-            </div>
           </div>
-          <div className="currAdd__box2">
-            <p>Nội dung</p>
-            <textarea cols="50" rows="5" onChange={handleChange('description')}></textarea>
+          <div className="currAdd__item">
+            <label>Mô tả</label>
+            <div className="currAdd__right">
+              <textarea onChange={handleChange('description')}></textarea>
+            </div>
           </div>
         </div>
         <div className="currAdd__btn">

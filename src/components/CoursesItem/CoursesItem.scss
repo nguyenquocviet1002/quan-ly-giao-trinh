@@ -1,17 +1,26 @@
 .courses {
   &__item {
     border: 1px solid #ccc;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #fff;
-    max-width: calc(20% - 20px);
-    margin-right: 10px;
-    margin-left: 10px;
+    max-width: calc(20% - 24px);
+    margin-right: 12px;
+    margin-left: 12px;
     margin-bottom: 20px;
     border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+
+    &:hover img {
+      transform: scale(1.05);
+    }
     img {
       width: 100%;
-      height: auto;
+      height: 160px;
+      object-fit: cover;
+      display: block;
       border-radius: 6px 6px 0 0;
+      transition: all 0.2s linear;
     }
     p {
       display: flex;
@@ -19,6 +28,7 @@
       justify-content: center;
       gap: 5px;
       font-size: 15px;
+      margin: 12px 0 0;
       img {
         width: 5%;
         height: auto;
@@ -32,35 +42,51 @@
 
   &__btn {
     display: block;
-    margin: 14px auto;
+    margin: 10px auto 16px;
     font-size: 13px;
     padding: 6px 10px;
     border-radius: 10px;
     color: #fff;
     border: none;
-    background: linear-gradient(118deg, #227ff4, #227ff4b2);
+    background: #d8ac62;
     cursor: pointer;
     &:hover {
       transition: all 0.2s ease-in-out;
-      background-color: #1b7bf0b2;
+      background-color: rgb(202, 148, 47);
+    }
+  }
+
+  @media (max-width: 1440px) {
+    &__btn {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    &__item {
+      img {
+        height: 130px;
+      }
     }
   }
 
   @media (max-width: 1024px) {
     &__item {
-      max-width: calc(25% - 20px);
+      max-width: calc(25% - 24px);
     }
   }
 
   @media (max-width: 820px) {
     &__item {
-      max-width: calc(33% - 20px);
+      max-width: calc(33% - 24px);
     }
   }
 
   @media (max-width: 480px) {
     &__item {
-      max-width: calc(50% - 20px);
+      max-width: calc(50% - 24px);
+      p {
+        font-size: 13px;
+      }
     }
   }
 }

@@ -89,15 +89,17 @@ export default function Students() {
   const columns = [
     {
       name: 'Học viên',
+      width: '14%',
       selector: (row) => row.name,
     },
     {
       name: 'Email',
+      width: '66%',
       selector: (row) => row.email,
-      center: true,
     },
     {
       name: 'Trạng thái',
+      width: '10%',
       center: true,
       selector: (row) => (
         <select defaultValue={row.status} onChange={(event) => handleUpdate(row.id, event.target.value)}>
@@ -108,6 +110,7 @@ export default function Students() {
     },
     {
       name: 'Hành động',
+      width: '10%',
       center: true,
       selector: (row) => (
         <div className="students__box--img" onClick={() => handleDelete(row.id)}>

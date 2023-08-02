@@ -22,46 +22,48 @@ export default function Courses() {
   return (
     <div className="courses">
       <div className="container">
-        {id === ''
-          ? dataCurriculumDepartment && (
-              <>
-                <div className="courses__title">
-                  <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/agenda.png`} alt="" />
-                  Tất cả giáo trình
-                </div>
-                <div className="courses__box">
-                  {dataCurriculumDepartment.data.data.map((item, index) =>
-                    token !== null ? (
-                      <CoursesItem key={index} data={item} />
-                    ) : item.status === 'public' ? (
-                      <CoursesItem key={index} data={item} />
-                    ) : (
-                      ''
-                    ),
-                  )}
-                </div>
-              </>
-            )
-          : dataCurriculumDepartment &&
-            dataDepartment && (
-              <>
-                <div className="courses__title">
-                  <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/agenda.png`} alt="" />
-                  Giáo trình {filterById(id, dataDepartment.data.data)}
-                </div>
-                <div className="courses__box">
-                  {dataCurriculumDepartment.data.data.map((item, index) =>
-                    token !== null ? (
-                      <CoursesItem key={index} data={item} />
-                    ) : item.status === 'public' ? (
-                      <CoursesItem key={index} data={item} />
-                    ) : (
-                      ''
-                    ),
-                  )}
-                </div>
-              </>
-            )}
+        <div className="courses__main">
+          {id === ''
+            ? dataCurriculumDepartment && (
+                <>
+                  <div className="courses__title">
+                    <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/agenda.png`} alt="" />
+                    Tất cả chuyên mục
+                  </div>
+                  <div className="courses__box">
+                    {dataCurriculumDepartment.data.data.map((item, index) =>
+                      token !== null ? (
+                        <CoursesItem key={index} data={item} />
+                      ) : item.status === 'public' ? (
+                        <CoursesItem key={index} data={item} />
+                      ) : (
+                        ''
+                      ),
+                    )}
+                  </div>
+                </>
+              )
+            : dataCurriculumDepartment &&
+              dataDepartment && (
+                <>
+                  <div className="courses__title">
+                    <img width="64" height="64" src={`${process.env.PUBLIC_URL}/images/agenda.png`} alt="" />
+                    Chuyên mục {filterById(id, dataDepartment.data.data)}
+                  </div>
+                  <div className="courses__box">
+                    {dataCurriculumDepartment.data.data.map((item, index) =>
+                      token !== null ? (
+                        <CoursesItem key={index} data={item} />
+                      ) : item.status === 'public' ? (
+                        <CoursesItem key={index} data={item} />
+                      ) : (
+                        ''
+                      ),
+                    )}
+                  </div>
+                </>
+              )}
+        </div>
       </div>
     </div>
   );

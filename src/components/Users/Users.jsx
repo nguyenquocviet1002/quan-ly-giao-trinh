@@ -68,20 +68,23 @@ export default function Users() {
   const columns = [
     {
       name: 'Tài khoản',
+      width: '14%',
       selector: (row) => row.name,
     },
     {
       name: 'Email',
+      width: '66%',
       selector: (row) => row.email,
-      center: true,
     },
     {
       name: 'Team',
+      width: '10%',
       selector: (row) => filterById(row.department_id, dataDepartment.data.data),
       center: true,
     },
     {
       name: 'Hành động',
+      width: '10%',
       center: true,
       selector: (row) => (
         <div className="users__box--img">
@@ -98,12 +101,13 @@ export default function Users() {
 
   return (
     <div className="users">
-      <div className="users__btn">
-        <Link to="/admin/them-tai-khoan">
-          <button>Thêm</button>
-        </Link>
-      </div>
       <div className="users__table">
+        <div className="users__btn">
+          <div className="users__title">Danh sách tài khoản</div>
+          <Link to="/admin/them-tai-khoan">
+            <button>Thêm</button>
+          </Link>
+        </div>
         {isSuccessAllUser && (
           <DataTable
             columns={columns}
