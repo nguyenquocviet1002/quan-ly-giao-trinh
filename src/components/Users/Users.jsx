@@ -44,7 +44,7 @@ const customStyles = {
 export default function Users() {
   const [dataRole, setDataRole] = useState([]);
   // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useLocalStorage('token', null);
+  const [token, setToken] = useLocalStorage('token-document', null);
   const { dataAllUser, isSuccessAllUser } = useGetAllUser(token);
   const { dataDepartment } = useGetDepartment();
   const { muteDeleteUser } = useDeleteUser(token);

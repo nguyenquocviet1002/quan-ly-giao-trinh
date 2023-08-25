@@ -41,7 +41,9 @@
   &__search {
     border-bottom: 1px solid rgb(222, 226, 230);
     width: 10%;
-    min-width: 184px;
+    min-width: 200px;
+    display: flex;
+    justify-content: space-between;
     input {
       outline: none;
       border: none;

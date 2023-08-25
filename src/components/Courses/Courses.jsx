@@ -4,8 +4,7 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useGetDepartment } from '@/services/departmentService';
 import { filterById } from '@/utils/filterById';
 import CoursesItem from '../CoursesItem';
-import 'swiper/css';
-import './_Courses.scss';
+import './Courses.scss';
 
 export default function Courses() {
   let { id } = useParams();
@@ -16,7 +15,7 @@ export default function Courses() {
   // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useLocalStorage('token', null);
 
-  const { dataCurriculumDepartment } = useGetCurriculumDepartment(id);
+  const { dataCurriculumDepartment } = useGetCurriculumDepartment({ id: id, name: '' });
   const { dataDepartment } = useGetDepartment();
 
   return (
@@ -31,7 +30,7 @@ export default function Courses() {
                     Tất cả chuyên mục
                   </div>
                   <div className="courses__box">
-                    {dataCurriculumDepartment.data.data.map((item, index) =>
+                    {dataCurriculumDepartment.data.map((item, index) =>
                       token !== null ? (
                         <CoursesItem key={index} data={item} />
                       ) : item.status === 'public' ? (
@@ -51,7 +50,7 @@ export default function Courses() {
                     Chuyên mục {filterById(id, dataDepartment.data.data)}
                   </div>
                   <div className="courses__box">
-                    {dataCurriculumDepartment.data.data.map((item, index) =>
+                    {dataCurriculumDepartment.data.map((item, index) =>
                       token !== null ? (
                         <CoursesItem key={index} data={item} />
                       ) : item.status === 'public' ? (

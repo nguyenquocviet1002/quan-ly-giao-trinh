@@ -22,7 +22,7 @@ export function useGetAllUser(token) {
 
 export function useGetUserDepartment(token, id) {
     const { data: dataUserDepartment, isLoading: isLoadingUserDepartment, isSuccess: isSuccessUserDepartment } = useQuery({
-        queryKey: ['userDepartment'],
+        queryKey: ['userDepartment', Number(id)],
         queryFn: () => getUserDepartmentFn(token, id),
         staleTime: Infinity
     })

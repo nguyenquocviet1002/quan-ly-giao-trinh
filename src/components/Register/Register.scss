@@ -1,4 +1,4 @@
-.login {
+.regist {
   background: #f4f4f4;
   display: flex;
   align-items: center;
@@ -12,8 +12,8 @@
     display: flex;
     overflow: hidden;
     border-radius: 10px;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     background: #fff;
     padding: 45px 0;
     gap: 30px;
@@ -51,7 +51,7 @@
       padding: 10px 15px;
       margin: 0 0 10px;
       border-radius: 25px;
-      border: 0;
+      border: 1px solid transparent;
       color: #a2a2a2;
       background-color: #f4f4f4;
     }
@@ -74,13 +74,16 @@
       cursor: pointer;
     }
   }
-  &__regist {
-    text-align: center;
-    color: #deb97b;
-    font-weight: 500;
-    font-style: italic;
-    margin-top: 15px;
-    text-decoration: underline;
+  &__select {
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 0 0 10px;
+      border-radius: 25px;
+      border: 0;
+      color: #a2a2a2;
+      background-color: #f4f4f4;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -94,4 +97,8 @@
       width: 46%;
     }
   }
+}
+
+.err {
+  border-color: #ff6f6f !important;
 }

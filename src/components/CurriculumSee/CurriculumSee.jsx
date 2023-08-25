@@ -68,7 +68,7 @@ export default function CurriculumEdit() {
         </div>
         <ModalAddLesson isShowing={isShowing} hide={toggle} element={cpn} id={id} />
         {isShowing && cpn === 'ModalEditLesson' && (
-          <ModalEditLesson isShowing={isShowing} hide={toggle} element={cpn} id={idLesson} />
+          <ModalEditLesson isShowing={isShowing} hide={toggle} element={cpn} id={idLesson} idCurr={id} />
         )}
       </div>
     )

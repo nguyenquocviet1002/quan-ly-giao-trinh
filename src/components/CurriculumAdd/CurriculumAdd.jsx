@@ -5,22 +5,25 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useGetUser } from '@/services/userService';
 import { useUploadImage } from '@/services/fileService';
 import { useCreateCurriculum } from '@/services/curriculumService';
-import './_CurriculumAdd.scss';
+import './CurriculumAdd.scss';
 
 export default function CurriculumAdd() {
   const initialCurr = {
     department_id: '',
     user_id: '',
     name: '',
-    images: '',
+    images: 'https://i.imgur.com/RGX4mrq.png',
     status: 'public',
     description: '',
+    size: 0,
+    vote: 0,
+    view: 0,
   };
 
   const [infoCurr, setInfoCurr] = useState(initialCurr);
 
   // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useLocalStorage('token', null);
+  const [token, setToken] = useLocalStorage('token-document', null);
 
   const queryClient = useQueryClient();
   const navigate = useNavigate();
@@ -40,13 +43,24 @@ export default function CurriculumAdd() {
     setInfoCurr((prev) => ({ ...prev, [name]: event.target.value }));
   };
   const handleSubmitImage = (item) => {
-    mutateUploadImage(item, {
-      onSuccess: (data) =>
-        setInfoCurr((prev) => ({
-          ...prev,
-          images: `https://scigroup.com.vn/app/upload/public${data.data.data.image}`,
-        })),
-    });
+    if (item) {
+      mutateUploadImage(item, {
+        onSuccess: (data) => {
+          setInfoCurr((prev) => ({
+            ...prev,
+            images: `https://scigroup.com.vn/app/upload/public${data.data.data.image}`,
+          }));
+        },
+        onError: () => {
+          alert('Ảnh vượt quá dung lượng cho phép!!!(1mb)');
+        },
+      });
+    } else {
+      setInfoCurr((prev) => ({
+        ...prev,
+        images: `https://i.imgur.com/RGX4mrq.png`,
+      }));
+    }
   };
 
   const handleSubmit = () => {
@@ -56,6 +70,9 @@ export default function CurriculumAdd() {
         queryClient.invalidateQueries({ queryKey: ['curriculumsDepartment', Number(0)] });
         setInfoCurr(initialCurr);
         navigate('/admin');
+      },
+      onError: (err) => {
+        alert('Vui lòng điền tên tài liệu.');
       },
     });
   };
@@ -88,6 +105,8 @@ export default function CurriculumAdd() {
                 onChange={(e) => {
                   handleSubmitImage(e.target.files[0]);
                 }}
+                multiple
+                accept="image/*"
               ></input>
             </div>
           </div>

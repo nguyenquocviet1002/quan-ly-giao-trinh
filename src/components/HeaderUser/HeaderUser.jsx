@@ -1,12 +1,12 @@
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useNavigate, Link } from 'react-router-dom';
 import { useGetUser } from '@/services/userService';
-import './_HeaderUser.scss';
 import { useEffect } from 'react';
+import './HeaderUser.scss';
 
 export default function HeaderUser() {
   // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useLocalStorage('token', null);
+  const [token, setToken] = useLocalStorage('token-document', null);
   const { dataUser, isSuccessUser } = useGetUser(token);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function HeaderUser() {
   return (
     <header className="headerUser">
       <div className="headerUser__box">
-        <div class="header__btncheck">
+        <div className="header__btncheck">
           <span></span>
           <span></span>
           <span></span>

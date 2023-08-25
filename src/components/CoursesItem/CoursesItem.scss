@@ -1,7 +1,6 @@
 .courses {
   &__item {
     border: 1px solid #ccc;
-    // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #fff;
     max-width: calc(20% - 24px);
     margin-right: 12px;
@@ -10,7 +9,6 @@
     border-radius: 6px;
     overflow: hidden;
     width: 100%;
-
     &:hover img {
       transform: scale(1.05);
     }
@@ -35,11 +33,17 @@
       }
     }
   }
-
   &__name {
     font-weight: 600;
   }
-
+  &__cta {
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-around;
+    span {
+      padding-left: 5px;
+    }
+  }
   &__btn {
     display: block;
     margin: 10px auto 16px;
@@ -55,7 +59,6 @@
       background-color: rgb(202, 148, 47);
     }
   }
-
   @media (max-width: 1440px) {
     &__btn {
       font-size: 11px;
@@ -68,19 +71,16 @@
       }
     }
   }
-
   @media (max-width: 1024px) {
     &__item {
       max-width: calc(25% - 24px);
     }
   }
-
   @media (max-width: 820px) {
     &__item {
       max-width: calc(33% - 24px);
     }
   }
-
   @media (max-width: 480px) {
     &__item {
       max-width: calc(50% - 24px);

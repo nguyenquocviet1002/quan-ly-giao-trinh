@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Link } from 'react-router-dom';
 import { useGetDepartment } from '@/services/departmentService';
-import './_Sidebar.scss';
+import './Sidebar.scss';
 
 export default function Sidebar() {
   const { dataDepartment, isSuccessDepartment } = useGetDepartment();
