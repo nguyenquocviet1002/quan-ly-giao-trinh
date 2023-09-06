@@ -77,6 +77,18 @@ export default function CurriculumList() {
       grow: 0.7,
     },
     {
+      name: 'Lượt xem',
+      selector: (row) => row.view,
+      center: true,
+      width: '10%',
+    },
+    {
+      name: 'Lượt thích',
+      selector: (row) => row.vote,
+      center: true,
+      width: '10%',
+    },
+    {
       name: 'Dung lượng',
       selector: (row) => `${row.size} MB`,
       center: true,

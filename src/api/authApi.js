@@ -7,3 +7,9 @@ export const registerFn = (body) => (
 export const loginFn = (body) => (
     http.post('/login', JSON.stringify(body))
 )
+
+export const changePasswordFn = (token, body) => (
+    http.post('/reset-password', JSON.stringify(body), {
+        headers: { Authorization: token }
+    })
+)

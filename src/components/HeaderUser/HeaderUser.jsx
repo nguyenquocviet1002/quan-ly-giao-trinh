@@ -60,11 +60,15 @@ export default function HeaderUser() {
 
               <li className="headerUser__itemMenu">
                 <i className="icon-user-4"></i>
-                Hồ sơ cá nhân
+                <Link to="/admin/info" style={{ display: 'block' }}>
+                  Hồ sơ cá nhân
+                </Link>
               </li>
               <li className="headerUser__itemMenu">
                 <i className="icon-lock"></i>
-                Đổi mật khẩu
+                <Link to="/admin/change-password" style={{ display: 'block' }}>
+                  Đổi mật khẩu
+                </Link>
               </li>
               <li className="headerUser__itemMenu" onClick={() => handleLogout()}>
                 <i className="icon-logout"></i>
