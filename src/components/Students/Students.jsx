@@ -41,9 +41,12 @@ const customStyles = {
 export default function Students() {
   const [dataRole, setDataRole] = useState([]);
   // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useLocalStorage('token', null);
-  const { dataUser } = useGetUser(token);
-  const { dataUserDepartment, isSuccessUserDepartment } = useGetUserDepartment(token, dataUser.data.data.department_id);
+  const [token, setToken] = useLocalStorage('token-document', null);
+  const { dataUser, isSuccessUser } = useGetUser(token);
+  const { dataUserDepartment, isSuccessUserDepartment } = useGetUserDepartment(
+    token,
+    isSuccessUser ? dataUser.data.data.department_id : '',
+  );
   const { muteUpdateUser } = useUpdateUser(token);
   const { muteDeleteUser } = useDeleteUser(token);
   const queryClient = useQueryClient();

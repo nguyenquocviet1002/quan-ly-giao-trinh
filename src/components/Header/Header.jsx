@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './_Header.scss';
+import './Header.scss';
 
 export default function Header() {
   return (
     <header className="header">
       <div className="header__box">
-        <div class="header__btncheck">
+        <div className="header__btncheck">
           <span></span>
           <span></span>
           <span></span>

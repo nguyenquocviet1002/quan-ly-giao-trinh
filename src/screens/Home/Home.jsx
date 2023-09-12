@@ -3,11 +3,11 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import HeaderUser from '@/components/HeaderUser';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';
-import './_Home.scss';
+import './Home.scss';
 
 export default function ScreenHome() {
   // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useLocalStorage('token', null);
+  const [token, setToken] = useLocalStorage('token-document', null);
 
   return (
     <div>

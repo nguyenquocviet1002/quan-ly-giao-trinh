@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { loginFn, registerFn } from '@/api/authApi'
+import { changePasswordFn, loginFn, registerFn } from '@/api/authApi'
 
 export function useRegister() {
     const { mutate: mutateRegister, isLoading: isLoadingRegister, isSuccess: isSuccessRegister } = useMutation({
@@ -13,4 +13,11 @@ export function useLogin() {
         mutationFn: (body) => loginFn(body)
     })
     return { mutateLogin, dataLogin, isLoadingLogin, isSuccessLogin }
+}
+
+export function useChangePassword() {
+    const { mutate: mutateChangePassword, data: dataChangePassword, isLoading: isLoadingChangePassword, isSuccess: isSuccessChangePassword } = useMutation({
+        mutationFn: (body) => changePasswordFn(body)
+    })
+    return { mutateChangePassword, dataChangePassword, isLoadingChangePassword, isSuccessChangePassword }
 }

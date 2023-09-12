@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useUploadImage } from '@/services/fileService';
 import { useGetCurriculumById, useUpdateCurriculum } from '@/services/curriculumService';
-import './_CurriculumEdit.scss';
+import './CurriculumEdit.scss';
 
 export default function CurriculumEdit() {
   const { id } = useParams();
@@ -43,19 +43,26 @@ export default function CurriculumEdit() {
   const navigate = useNavigate();
 
   const { mutateUploadImage } = useUploadImage();
-  const { mutateUpdateCurr } = useUpdateCurriculum(token, id);
+  const { mutateUpdateCurr } = useUpdateCurriculum(id);
 
   const handleChange = (name) => (event) => {
     setInfoCurr((prev) => ({ ...prev, [name]: event.target.value }));
   };
   const handleSubmitImage = (item) => {
-    mutateUploadImage(item, {
-      onSuccess: (data) =>
-        setInfoCurr((prev) => ({
-          ...prev,
-          images: `https://scigroup.com.vn/app/upload/public${data.data.data.image}`,
-        })),
-    });
+    if (item) {
+      mutateUploadImage(item, {
+        onSuccess: (data) =>
+          setInfoCurr((prev) => ({
+            ...prev,
+            images: `https://scigroup.com.vn/app/upload/public${data.data.data.image}`,
+          })),
+        onError: () => {
+          alert('Ảnh vượt quá dung lượng cho phép!!!(1mb)');
+        },
+      });
+    } else {
+      return false;
+    }
   };
 
   const handleSubmit = () => {
@@ -66,16 +73,11 @@ export default function CurriculumEdit() {
         queryClient.invalidateQueries({ queryKey: ['curriculumsById', Number(data.data.data.id)] });
         navigate('/admin');
       },
+      onError: (err) => {
+        alert('Vui lòng điền tên tài liệu.');
+      },
     });
   };
-
-  // const handleDelete = (id) => {
-  //   mutateDeleteLesson(id, {
-  //     onSuccess: (data) => {
-  //       queryClient.invalidateQueries({ queryKey: ['lessonByCurr', Number(data.data.data.curriculum_id)] });
-  //     },
-  //   });
-  // };
 
   return (
     isSuccessCurriculumById && (
@@ -96,7 +98,13 @@ export default function CurriculumEdit() {
                         handleSubmitImage(e.target.files[0]);
                       }}
                     ></input>
-                    <img className="imgCourseFile" src={dataCurriculumById.data.data.images} alt="" />
+                    <img className="imgCourseFile" src={infoCurr.images} alt="" />
+                    <div
+                      className="deleteImage"
+                      onClick={() => setInfoCurr({ ...infoCurr, images: 'https://i.imgur.com/RGX4mrq.png' })}
+                    >
+                      Xóa
+                    </div>
                   </div>
                 </div>
               </div>
@@ -126,32 +134,6 @@ export default function CurriculumEdit() {
               </div>
             </div>
           </div>
-          {/*  */}
-          {/* <div className="currEdit__list">
-            {isSuccessLessonByCurr &&
-              dataLessonByCurr.data.data.map((item, index) => (
-                <div key={index} className="currEdit__list--item">
-                  <p>{item.name}</p>
-                  <div className="currEdit__list--action">
-                    <button
-                      onClick={() => {
-                        toggle('ModalEditLesson');
-                        setIdLesson(item.id);
-                      }}
-                    >
-                      <img src={`${process.env.PUBLIC_URL}/images/edit-2.png`} alt="" />
-                    </button>
-                    <button onClick={() => handleDelete(item.id)}>
-                      <img src={`${process.env.PUBLIC_URL}/images/trash-2.png`} alt="" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-          </div>
-          <div className="currEdit__addItem" onClick={() => toggle('ModalAddLesson')}>
-            <img src={`${process.env.PUBLIC_URL}/images/plus.png`} alt="" />
-            Thêm mới
-          </div> */}
           <div className="currEdit__icon" onClick={handleSubmit}>
             <button>Lưu</button>
           </div>

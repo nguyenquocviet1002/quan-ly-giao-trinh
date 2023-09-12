@@ -16,7 +16,7 @@ export default function CurriculumEdit() {
   const [idLesson, setIdLesson] = useState('');
 
   // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useLocalStorage('token', null);
+  const [token, setToken] = useLocalStorage('token-document', null);
   const { isShowing, cpn, toggle } = useModal();
 
   const queryClient = useQueryClient();
@@ -24,10 +24,10 @@ export default function CurriculumEdit() {
   const { dataLessonByCurr, isSuccessLessonByCurr } = useGetLessonByCurr(id);
   const { mutateDeleteLesson } = useDeleteLesson(token);
 
-  const handleDelete = (id) => {
-    mutateDeleteLesson(id, {
+  const handleDelete = (ids) => {
+    mutateDeleteLesson(ids, {
       onSuccess: (data) => {
-        queryClient.invalidateQueries({ queryKey: ['lessonByCurr', Number(data.data.data.curriculum_id)] });
+        queryClient.invalidateQueries({ queryKey: ['lessonByCurr', Number(id)] });
       },
     });
   };
@@ -68,7 +68,7 @@ export default function CurriculumEdit() {
         </div>
         <ModalAddLesson isShowing={isShowing} hide={toggle} element={cpn} id={id} />
         {isShowing && cpn === 'ModalEditLesson' && (
-          <ModalEditLesson isShowing={isShowing} hide={toggle} element={cpn} id={idLesson} />
+          <ModalEditLesson isShowing={isShowing} hide={toggle} element={cpn} id={idLesson} idCurr={id} />
         )}
       </div>
     )

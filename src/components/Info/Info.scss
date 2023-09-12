@@ -1,0 +1,39 @@
+.info__heading {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+.info__col {
+  background-color: #fff;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+.info__line {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  margin: 20px 0;
+}
+.info__input {
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+.info__submitPass {
+  transition: all 0.15s linear;
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: #243648;
+  color: #fff;
+  border: 1px solid #243648;
+  cursor: pointer;
+  &:hover {
+    background-color: #fff;
+    color: #243648;
+  }
+}

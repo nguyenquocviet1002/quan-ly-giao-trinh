@@ -11,13 +11,13 @@ export function useGetCurriculum() {
     return { dataCurriculum, isLoadingCurriculum, isSuccessCurriculum }
 }
 
-export function useGetCurriculumDepartment(id) {
-    const { data: dataCurriculumDepartment, isLoading: isLoadingCurriculumDepartment, isSuccess: isSuccessCurriculumDepartment } = useQuery({
-        queryKey: ['curriculumsDepartment', Number(id)],
-        queryFn: () => getCurriculumDepartmentFn(id),
-        staleTime: Infinity
+export function useGetCurriculumDepartment(filter) {
+    const { data: dataCurriculumDepartment, isLoading: isLoadingCurriculumDepartment, isSuccess: isSuccessCurriculumDepartment, refetch: refetchCurriculumDepartment } = useQuery({
+        queryKey: ['curriculumsDepartment', Number(filter.id)],
+        queryFn: () => getCurriculumDepartmentFn(filter),
+        staleTime: Infinity,
     })
-    return { dataCurriculumDepartment, isLoadingCurriculumDepartment, isSuccessCurriculumDepartment }
+    return { dataCurriculumDepartment, isLoadingCurriculumDepartment, isSuccessCurriculumDepartment, refetchCurriculumDepartment }
 }
 
 export function useGetCurriculumById(id) {
@@ -36,9 +36,9 @@ export function useCreateCurriculum(token) {
     return { mutateCreateCurr, dataCreateCurriculum, isLoadingCreateCurriculum, isSuccessCreateCurriculum }
 }
 
-export function useUpdateCurriculum(token, id) {
+export function useUpdateCurriculum(id) {
     const { mutate: mutateUpdateCurr, data: dataUpdateCurriculum, isLoading: isLoadingUpdateCurriculum, isSuccess: isSuccessUpdateCurriculum } = useMutation({
-        mutationFn: (body) => updateCurriculumFn(token, id, body)
+        mutationFn: (body) => updateCurriculumFn(id, body)
     })
     return { mutateUpdateCurr, dataUpdateCurriculum, isLoadingUpdateCurriculum, isSuccessUpdateCurriculum }
 }

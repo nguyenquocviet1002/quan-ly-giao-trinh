@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDeleteCurriculum, useGetCurriculumDepartment } from '@/services/curriculumService';
 import { useGetUser } from '@/services/userService';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
-import './_CurriculumList.scss';
+import './CurriculumList.scss';
 
 const customStyles = {
   subHeader: {
@@ -41,12 +41,15 @@ const customStyles = {
 };
 
 export default function CurriculumList() {
+  const [valueSearch, setValueSearch] = useState('');
   // eslint-disable-next-line no-unused-vars
-  const [token, setToken] = useLocalStorage('token', null);
-  const { dataUser } = useGetUser(token);
-  const { dataCurriculumDepartment, isSuccessCurriculumDepartment } = useGetCurriculumDepartment(
-    dataUser.data.data.department_id,
-  );
+  const [token, setToken] = useLocalStorage('token-document', null);
+  const { dataUser, isSuccessUser } = useGetUser(token);
+  const { dataCurriculumDepartment, isSuccessCurriculumDepartment, refetchCurriculumDepartment } =
+    useGetCurriculumDepartment({
+      id: isSuccessUser ? dataUser.data.data.department_id : '',
+      name: valueSearch,
+    });
 
   const queryClient = useQueryClient();
 
@@ -74,7 +77,20 @@ export default function CurriculumList() {
       grow: 0.7,
     },
     {
+      name: 'Lượt xem',
+      selector: (row) => row.view,
+      center: true,
+      width: '10%',
+    },
+    {
+      name: 'Lượt thích',
+      selector: (row) => row.vote,
+      center: true,
+      width: '10%',
+    },
+    {
       name: 'Dung lượng',
+      selector: (row) => `${row.size} MB`,
       center: true,
       width: '10%',
     },
@@ -121,14 +137,32 @@ export default function CurriculumList() {
             <i className="icon-search-1"></i>
           </div>
           <div className="currList__search">
-            <input type="text" placeholder="Tìm kiếm" />
-            <i className="icon-search-1"></i>
+            <input
+              type="text"
+              placeholder="Tìm kiếm"
+              value={valueSearch}
+              onChange={(e) => setValueSearch(e.target.value)}
+            />
+            <div style={{ display: 'flex' }}>
+              {valueSearch && (
+                <i
+                  class="icon-cancel-2"
+                  onClick={() => {
+                    setValueSearch('');
+                    setTimeout(() => {
+                      refetchCurriculumDepartment();
+                    }, 0);
+                  }}
+                ></i>
+              )}
+              <i className="icon-search-1" onClick={refetchCurriculumDepartment}></i>
+            </div>
           </div>
         </div>
         {isSuccessCurriculumDepartment && (
           <DataTable
             columns={columns}
-            data={dataCurriculumDepartment.data.data}
+            data={dataCurriculumDepartment.data}
             customStyles={customStyles}
             highlightOnHover
             pagination
