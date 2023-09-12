@@ -12,9 +12,7 @@ export default function Header() {
           <span></span>
         </div>
         <div className="header__hollow"></div>
-        <div className="header__noti">
-          <img width="30" height="30" src={`${process.env.PUBLIC_URL}/images/icon-bell.png`} alt="" />
-        </div>
+        <div className="header__noti"></div>
         <div className="header__btn">
           <Link to="/login" className="header__btnItem">
             Đăng nhập
