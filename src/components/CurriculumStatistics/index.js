@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import './CurriculumStatistics.scss';
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useGetUser } from "@/services/userService";
 import { useGetCurriculumDepartment } from "@/services/curriculumService";
 import { sort } from "@/utils/sort";
+import './CurriculumStatistics.scss';
 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
@@ -85,46 +85,48 @@ function CurriculumStatistics() {
             {
                 label: 'Dung lượng (MB)',
                 data: dataSize.data,
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
             },
         ],
     };
 
     return (
         <div className="currList">
-            <div className="currStaticFlex">
-                <div className="currStaticItem currStaticTable">
-                    <table>
-                        <thead>
-
-                        </thead>
+            <div className="row">
+                <div className="col-md-6">
+                    <div className="statis__title">Thống kê tài liệu</div>
+                    <table className="statis__table">
                         <tbody>
                             <tr>
-                                <td>Tổng dung lượng đã sử dụng</td>
-                                <td>{sizeTotal}</td>
+                                <td>Dung lượng đã sử dụng</td>
+                                <td>{sizeTotal} MB</td>
                             </tr>
                             <tr>
-                                <td>Tổng số lượng tài liệu đã upload</td>
+                                <td>Số lượng tài liệu upload</td>
                                 <td>{amountTotal}</td>
                             </tr>
                             <tr>
-                                <td>Tổng số lượng tài liệu public</td>
+                                <td>Số lượng tài liệu public</td>
                                 <td>{amountPublic}</td>
                             </tr>
                             <tr>
-                                <td>Tổng số lượng tài liệu private</td>
+                                <td>Số lượng tài liệu private</td>
                                 <td>{amountPrivate}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div className="currStaticItem">
+                <div className="col-md-6">
+                    <div className="statis__title">Thống kê lượt xem</div>
                     <Bar options={options} data={data} />
                 </div>
-                <div className="currStaticItem">
-                    <Bar options={options} data={data2} />
-                </div>
-                <div className="currStaticItem">
+            </div>
+            <div className="row statis__row">
+                <div className="col-md-6">
+                    <div className="statis__title">Thống kê lượt thích</div>
+                    <Bar options={options} data={data2} /></div>
+                <div className="col-md-6">
+                    <div className="statis__title">Thống kê dung lượng</div>
                     <Bar options={options} data={data3} />
                 </div>
             </div>

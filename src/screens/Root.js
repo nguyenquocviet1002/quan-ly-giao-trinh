@@ -16,7 +16,6 @@ import Courses from '@/components/Courses';
 import CoursesDetail from '@/components/CoursesDetail';
 import CurriculumStatistics from '@/components/CurriculumStatistics';
 import Info from '@/components/Info';
-import ChangePassword from '@/components/ChangePassword';
 
 const ScreenRoot = () => {
     return (
@@ -42,7 +41,6 @@ const ScreenRoot = () => {
                     <Route path='danh-sach-tai-khoan' element={<Users />} />
                     <Route path='them-tai-khoan' element={<UserAdd />} />
                     <Route path='info' element={<Info />} />
-                    <Route path='change-password' element={<ChangePassword />} />
                 </Route>
                 <Route path='*' element={<>404</>} />
             </Routes>

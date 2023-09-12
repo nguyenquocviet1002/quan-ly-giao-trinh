@@ -8,8 +8,8 @@ export const loginFn = (body) => (
     http.post('/login', JSON.stringify(body))
 )
 
-export const changePasswordFn = (token, body) => (
+export const changePasswordFn = (body) => (
     http.post('/reset-password', JSON.stringify(body), {
-        headers: { Authorization: token }
+        headers: { Authorization: body.token }
     })
 )

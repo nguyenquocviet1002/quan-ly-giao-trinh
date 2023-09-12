@@ -6,6 +6,6 @@ export const sort = (obj, key) => {
         return b[key] - a[key];
     });
     byData.map(item => { label.push(item.name); data.push(item[key]); return true; });
-    return { label: label, data: data }
+    return { label: label.splice(0, 5), data: data.splice(0, 5) }
 }
 
